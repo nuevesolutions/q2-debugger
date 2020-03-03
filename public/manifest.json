@@ -1,0 +1,19 @@
+{
+  "name": "q2-debugger",
+  "version": "1.0",
+  "description": "chrome extension for debugging q2",
+  "manifest_version": 2,
+  "devtools_page": "devtools.html",
+  "permissions": ["tabs"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "web_accessible_resources": ["injectable.js"]
+}
