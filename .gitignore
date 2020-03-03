@@ -81,3 +81,6 @@ tsconfig.tsbuildinfo
 
 pnpm-lock.yaml
 dist
+
+/q2-debugger
+/q2-debugger.tar.gz
