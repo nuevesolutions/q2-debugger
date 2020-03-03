@@ -6,6 +6,8 @@ import App from './App';
 const wolfsbane = new Wolfsbane(chrome.devtools.inspectedWindow.tabId);
 const { logger } = wolfsbane;
 
-logger.info('hello', 'q2');
-
-render(<App />, document.getElementById('app'));
+try {
+  render(<App logger={logger} />, document.getElementById('app'));
+} catch (err) {
+  logger.warn(err);
+}
