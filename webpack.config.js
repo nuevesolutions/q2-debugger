@@ -2,8 +2,9 @@ const CopyPlugin = require('copy-webpack-plugin');
 var path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   target: 'web',
+  devtool: 'cheap-module-source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },

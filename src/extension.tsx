@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import React from 'react';
 import Wolfsbane from 'wolfsbane';
 import { render } from 'react-dom';
