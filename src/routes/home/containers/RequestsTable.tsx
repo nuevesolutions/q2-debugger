@@ -11,9 +11,9 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   function renderRequests(requests: RequestRow[]) {
     return requests.map((request: RequestRow) => (
       <Row key={request.status + request.routingKey + request.url}>
-        <Data>{request.status}</Data>
-        <Data>{request.routingKey}</Data>
-        <Data>
+        <Data style={styles.columns.status}>{request.status}</Data>
+        <Data style={styles.columns.routingKey}>{request.routingKey}</Data>
+        <Data style={styles.columns.requestData}>
           <Inspector
             data={
               typeof request.requestData === 'string'
@@ -22,7 +22,7 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
             }
           />
         </Data>
-        <Data>
+        <Data style={styles.columns.responseData}>
           <Inspector
             data={
               typeof request.responseData === 'string'
@@ -31,25 +31,37 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
             }
           />
         </Data>
-        <Data>{request.url}</Data>
+        {/* <Data style={styles.columns.url}>{request.url}</Data> */}
       </Row>
     ));
   }
 
   return (
     <Table>
-      <Head>
-        <Row>
-          <Data>status</Data>
-          <Data>routing key</Data>
-          <Data>request data</Data>
-          <Data>response data</Data>
-          <Data>url</Data>
-        </Row>
-      </Head>
+      <div style={{ height: 20 }}>
+        <Head>
+          <Row>
+            <Data style={styles.columns.status}>status</Data>
+            <Data style={styles.columns.routingKey}>routing key</Data>
+            <Data style={styles.columns.requestData}>request data</Data>
+            <Data style={styles.columns.responseData}>response data</Data>
+            {/* <Data style={styles.columns.url}>url</Data> */}
+          </Row>
+        </Head>
+      </div>
       <Body>{renderRequests(props.requests)}</Body>
     </Table>
   );
+};
+
+const styles = {
+  columns: {
+    status: { width: '10%' },
+    routingKey: { width: '20%' },
+    requestData: { width: '30%' },
+    responseData: { width: '30%' },
+    url: { width: '10%' }
+  }
 };
 
 export default RequestsTable;

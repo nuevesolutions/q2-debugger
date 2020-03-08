@@ -5,6 +5,9 @@ import { render } from 'react-dom';
 import App from './App';
 
 const wolfsbane = new Wolfsbane(chrome.devtools.inspectedWindow.tabId);
+/* const wolfsbane = {
+ *   logger: console
+ * }; */
 const { logger } = wolfsbane;
 
 try {
