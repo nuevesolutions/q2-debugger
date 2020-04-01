@@ -46,8 +46,7 @@
     "react-dom": "^16.13.1",
     "react-inspector": "^5.0.1",
     "regenerator-runtime": "^0.13.5",
-    "table-inspector": "^0.0.4",
-    "wolfsbane": "^0.0.2"
+    "table-inspector": "^0.0.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
