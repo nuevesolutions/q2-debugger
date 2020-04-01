@@ -19,8 +19,8 @@ module.exports = {
     background: path.resolve(__dirname, 'src/background.ts'),
     contentScript: path.resolve(__dirname, 'src/contentScript.ts'),
     devtools: path.resolve(__dirname, 'src/devtools.ts'),
-    extension: path.resolve(__dirname, 'src/extension.tsx'),
-    injectible: path.resolve(__dirname, 'src/injectible.ts')
+    injectible: path.resolve(__dirname, 'src/injectible.ts'),
+    panel: path.resolve(__dirname, 'src/panel.tsx')
   },
   module: {
     rules: [
