@@ -1,23 +1,17 @@
 import queryString from 'query-string';
 import { useEffect, useState } from 'react';
+import requestsMock from '../mocks/requests';
+import useEnvironment from './useEnvironment';
 import { RequestRow, DevtoolsNetworkRequest } from '../types';
-// import useLogger from './useLogger';
 
 export function tmp() {
-  return [
-    {
-      requestData: '{}',
-      responseData: '{}',
-      routingKey: 'key',
-      status: 33,
-      url: 'abc'
-    }
-  ] as RequestRow[];
+  return [] as RequestRow[];
 }
 
 export default function useRequests(): RequestRow[] {
+  const environment = useEnvironment();
+  if (environment === 'tab') return requestsMock;
   const [requests, setRequests] = useState<any[]>([]);
-  // const logger = useLogger();
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener(handleRequest);

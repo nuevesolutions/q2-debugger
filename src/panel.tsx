@@ -1,14 +1,12 @@
 import '@babel/polyfill';
 import React from 'react';
-import Wolfsbane from 'wolfsbane';
 import { render } from 'react-dom';
 import App from './App';
+import Messenger from './messenger';
 
-const wolfsbane = new Wolfsbane(chrome.devtools.inspectedWindow.tabId);
-/* const wolfsbane = {
- *   logger: console
- * }; */
-const { logger } = wolfsbane;
+const messenger = new Messenger(chrome.devtools.inspectedWindow.tabId);
+
+const { logger } = messenger;
 
 try {
   render(<App logger={logger} />, document.getElementById('app'));

@@ -3,6 +3,6 @@ import { ExtensionPanel } from './types';
 chrome.devtools.panels.create(
   'Q2',
   '',
-  'extension.html',
+  'panel.html',
   (_panel: ExtensionPanel) => {}
 );
