@@ -5,13 +5,18 @@ import useEnvironment from './useEnvironment';
 import { RequestRow, DevtoolsNetworkRequest } from '../types';
 
 export function tmp() {
-  return [] as RequestRow[];
+  return [] as any[];
 }
 
-export default function useRequests(): RequestRow[] {
+export default function useRequests(): any {
   const environment = useEnvironment();
-  if (environment === 'tab') return requestsMock;
   const [requests, setRequests] = useState<any[]>([]);
+
+  const clear = () => {
+    setRequests([]);
+  };
+
+  if (environment === 'tab') return [requestsMock.reverse(), clear];
 
   useEffect(() => {
     chrome.devtools.network.onRequestFinished.addListener(handleRequest);
@@ -40,7 +45,7 @@ export default function useRequests(): RequestRow[] {
     try {
       data = JSON.parse(data);
     } catch (err) {}
-    const bodyString = await new Promise<string>(resolve => {
+    const bodyString = await new Promise<string>((resolve) => {
       request.getContent((content: string, _encoding: string) => {
         return resolve(content);
       });
@@ -56,10 +61,11 @@ export default function useRequests(): RequestRow[] {
           request.response.status,
         // @ts-ignore
         url: request.request.url,
-        responseData: JSON.parse(responseBody?.data?.forms?.[0])?.data
+        responseData: JSON.parse(responseBody?.data?.forms?.[0])?.data,
       },
-      ...requests
+      ...requests,
     ]);
   }
-  return requests;
+
+  return [requests.reverse(), clear];
 }

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Table, Head, Body, Row, Data } from 'table-inspector';
 import { Inspector } from 'react-inspector';
 import { RequestRow } from '../../../types';
@@ -9,6 +9,12 @@ export interface RequestsTableProps {
 
 const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   function renderRequests(requests: RequestRow[]) {
+    // const [allRequests, setAllRequests] = useState([]);
+
+    // useEffect(() => {
+    //   let data: any = [...requests];
+    //   setAllRequests(data.reverse());
+    // }, [props.requests]);
     return requests.map((request: RequestRow) => (
       <Row key={request.status + request.routingKey + request.url}>
         <Data style={styles.columns.status}>{request.status}</Data>
@@ -60,8 +66,8 @@ const styles = {
     routingKey: { width: '20%' },
     requestData: { width: '30%' },
     responseData: { width: '30%' },
-    url: { width: '10%' }
-  }
+    url: { width: '10%' },
+  },
 };
 
 export default RequestsTable;
