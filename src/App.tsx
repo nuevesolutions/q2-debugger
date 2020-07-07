@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import LoggerContext from './contexts/Logger';
 import Messenger from './messenger';
 import Routes from './routes';
@@ -10,7 +11,9 @@ export interface AppProps {
 const App: FC<AppProps> = (props: AppProps) => {
   return (
     <LoggerContext.Provider value={props.logger}>
-      <Routes />
+      <Router>
+        <Routes />
+      </Router>
     </LoggerContext.Provider>
   );
 };

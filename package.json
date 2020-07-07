@@ -40,11 +40,13 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
+    "@types/react-router-dom": "^5.1.5",
     "core-js": "^3.6.4",
     "query-string": "^6.11.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-inspector": "^5.0.1",
+    "react-router-dom": "^5.2.0",
     "regenerator-runtime": "^0.13.5",
     "table-inspector": "^0.0.4"
   },
