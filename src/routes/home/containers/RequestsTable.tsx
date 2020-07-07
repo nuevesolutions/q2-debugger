@@ -44,13 +44,13 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
 
   return (
     <Table>
-      <div style={{ height: 20 }}>
+      <div>
         <Head>
-          <Row>
-            <Data style={styles.columns.status}>status</Data>
-            <Data style={styles.columns.routingKey}>routing key</Data>
-            <Data style={styles.columns.requestData}>request data</Data>
-            <Data style={styles.columns.responseData}>response data</Data>
+          <Row style={{ height: '40px' }}>
+            <Data style={styles.columns.status}>Status</Data>
+            <Data style={styles.columns.routingKey}>Routing key</Data>
+            <Data style={styles.columns.requestData}>Request data</Data>
+            <Data style={styles.columns.responseData}>Response data</Data>
             {/* <Data style={styles.columns.url}>url</Data> */}
           </Row>
         </Head>
@@ -63,9 +63,15 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
 const styles = {
   columns: {
     status: { width: '10%' },
-    routingKey: { width: '20%' },
-    requestData: { width: '30%' },
-    responseData: { width: '30%' },
+    routingKey: { width: '10%' },
+    requestData: {
+      width: '35%',
+      overflowWrap: 'break-word',
+    } as React.CSSProperties,
+    responseData: {
+      width: '35%',
+      overflowWrap: 'break-word',
+    } as React.CSSProperties,
     url: { width: '10%' },
   },
 };
