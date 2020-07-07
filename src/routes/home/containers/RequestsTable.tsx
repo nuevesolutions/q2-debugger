@@ -43,7 +43,7 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   }
 
   return (
-    <Table>
+    <Table style={{ paddingBottom: '10px' }}>
       <div>
         <Head>
           <Row style={{ height: '40px' }}>
