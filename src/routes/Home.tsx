@@ -1,12 +1,14 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import RequestsTable from './home/containers/RequestsTable';
+import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
 
 export interface HomeProps {}
 
 const Home: FC<HomeProps> = (_props: HomeProps) => {
   const [requests, setClear] = useRequests();
+  const [addApi, setAddApi] = useState(false);
   const history = useHistory();
   const [allRequests, setAllRequests] = useState([]);
 
@@ -42,9 +44,12 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
 
   return (
     <div>
-      <button onClick={() => handleClear()}>Clear</button>
-      <button onClick={() => history.push('/add-api')}>Add</button>
-      <RequestsTable requests={allRequests} />
+      {!addApi && <button onClick={() => handleClear()}>Clear</button>}
+      <button onClick={() => setAddApi(!addApi)}>
+        {addApi ? 'Go back' : 'Add'}
+      </button>
+      {!addApi && <RequestsTable requests={allRequests} />}
+      {addApi && <AddApi />}
     </div>
   );
   // return <RequestsTable requests={requests} />;

@@ -7,7 +7,6 @@ const AddCustomApi: FC<AddCustomApiProps> = (props: AddCustomApiProps) => {
   const history = useHistory();
   return (
     <div style={styles.container.box}>
-      <button onClick={() => history.goBack()}>Go back</button>
       <div>
         <p>Routing key</p>
         <input
