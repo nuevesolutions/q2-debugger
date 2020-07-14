@@ -45,9 +45,9 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
   return (
     <div>
       {!addApi && <button onClick={() => handleClear()}>Clear</button>}
-      <button onClick={() => setAddApi(!addApi)}>
+      {/* <button onClick={() => setAddApi(!addApi)}>
         {addApi ? 'Go back' : 'Add'}
-      </button>
+      </button> */}
       {!addApi && <RequestsTable requests={allRequests} />}
       {addApi && <AddApi />}
     </div>
