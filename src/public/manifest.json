@@ -1,6 +1,6 @@
 {
   "name": "q2-debugger",
-  "version": "1.0",
+  "version": "0.0.1",
   "description": "chrome extension for debugging q2",
   "manifest_version": 2,
   "devtools_page": "devtools.html",
