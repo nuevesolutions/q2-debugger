@@ -1,7 +1,7 @@
 {
-  "name": "q2-debugger",
+  "name": "Q2 Debugger",
   "version": "0.0.1",
-  "description": "chrome extension for debugging q2",
+  "description": "Debug Q2 tecton network extension data requests",
   "manifest_version": 2,
   "devtools_page": "devtools.html",
   "permissions": [],

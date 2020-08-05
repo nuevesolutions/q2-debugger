@@ -1,3 +1,3 @@
 # Q2 Debugger
 
-> chrome extension for debugging q2
+> Chrome extension to Debug Q2 tecton network extension data requests
