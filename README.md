@@ -21,7 +21,7 @@ Chrome network inspector shows API headers/body vs Q2 API debugger extension sho
  	<li>Columns need to be made resizable</li>
  	<li>Need to support regular Q2 backend calls</li>
 </ol>
-<p style="font-size: 16px;"><strong>Open source code:</strong></p>
+<p style="font-size: 16px;"><strong>Support:</strong></p>
  You can comment and make suggestions for the plugin here. <a href="https://nuevesolutions.com/q2-api-debugger-chrome-extension/" target="_blank" rel="noopener noreferrer">Click Here</a>
 
 &nbsp;
