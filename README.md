@@ -6,11 +6,17 @@ To check out the  Extension on Chrome Web Store. <a href="https://chrome.google
 
 Q2 API debugger is similar to network inspector which lists out only tecton Q2 API calls. It shows the backend request key and payload sent/received.
 
-<img class="q2apiimg1" src="https://nuevesolutions.com/wp-content/uploads/2020/08/Screenshot1.jpg" alt="extension" />
+&nbsp;
+
+<img class="q2apiimg1 aligncenter" src="https://nuevesolutions.com/wp-content/uploads/2020/08/Screenshot2.jpg" alt="extension" />
+
+&nbsp;
+
+<img class="q2apiimg1 aligncenter" src="https://nuevesolutions.com/wp-content/uploads/2020/08/Screenshot1.jpg" alt="extension" />
 
 Chrome network inspector shows API headers/body vs Q2 API debugger extension shows Tecton request key and request/response payloads.
 
-<img class="q2apiimg2" src="https://nuevesolutions.com/wp-content/uploads/2020/08/Screenshot3.jpg" alt="extension" />
+<img class="q2apiimg2 aligncenter" src="https://nuevesolutions.com/wp-content/uploads/2020/08/Screenshot3.jpg" alt="extension" />
 
 <strong>FAQ:</strong>
 <ol>
