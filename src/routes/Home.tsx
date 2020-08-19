@@ -1,5 +1,20 @@
+/**
+ * Copyright 2020 Nueve Solutions LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import React, { FC, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import RequestsTable from './home/containers/RequestsTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
@@ -8,8 +23,7 @@ export interface HomeProps {}
 
 const Home: FC<HomeProps> = (_props: HomeProps) => {
   const [requests, setClear] = useRequests();
-  const [addApi, setAddApi] = useState(false);
-  const history = useHistory();
+  const [addApi] = useState(false);
   const [allRequests, setAllRequests] = useState([]);
 
   useEffect(() => {
@@ -22,21 +36,6 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
     setAllRequests(data);
   }, [requests]);
 
-  // async function handleClick() {
-  //   const dd = {
-  //     requestData: '{"howdy": "texassfsf"}',
-  //     responseData: '{"hello": "world"}',
-  //     routingKey: 'howdy',
-  //     status: Date.now().toString(),
-  //     url: 'https://siliconhills.dev',
-  //   };
-
-  //   const data: any = [...allRequests];
-  //   data.push(dd);
-
-  //   setAllRequests(data);
-  // }
-
   async function handleClear() {
     setClear();
     setAllRequests([]);
@@ -45,14 +44,10 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
   return (
     <div>
       {!addApi && <button onClick={() => handleClear()}>Clear</button>}
-      {/* <button onClick={() => setAddApi(!addApi)}>
-        {addApi ? 'Go back' : 'Add'}
-      </button> */}
       {!addApi && <RequestsTable requests={allRequests} />}
       {addApi && <AddApi />}
     </div>
   );
-  // return <RequestsTable requests={requests} />;
 };
 
 export default Home;
