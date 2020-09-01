@@ -18,6 +18,7 @@ import React, { FC, useEffect, useState } from 'react';
 import RequestsTable from './home/containers/RequestsTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
+import { Button } from '@silicon-ui/atoms/lib';
 
 export interface HomeProps {}
 
@@ -43,7 +44,7 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
 
   return (
     <div>
-      {!addApi && <button onClick={() => handleClear()}>Clear</button>}
+      {!addApi && <Button onPress={() => handleClear()}>Clear</Button>}
       {!addApi && <RequestsTable requests={allRequests} />}
       {addApi && <AddApi />}
     </div>

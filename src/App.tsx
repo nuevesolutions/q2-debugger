@@ -15,6 +15,8 @@
  */
 
 import React, { FC } from 'react';
+import { ThemeProvider } from 'emotion-theming';
+import theme from './theme';
 import LoggerContext from './contexts/Logger';
 import Messenger from './messenger';
 import Routes from './routes';
@@ -25,9 +27,11 @@ export interface AppProps {
 
 const App: FC<AppProps> = (props: AppProps) => {
   return (
-    <LoggerContext.Provider value={props.logger}>
-      <Routes />
-    </LoggerContext.Provider>
+    <ThemeProvider theme={theme}>
+      <LoggerContext.Provider value={props.logger}>
+        <Routes />
+      </LoggerContext.Provider>
+    </ThemeProvider>
   );
 };
 
