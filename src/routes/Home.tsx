@@ -18,8 +18,21 @@ import React, { FC, useEffect, useState } from 'react';
 import RequestsTable from './home/containers/RequestsTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
-import { Button } from '@silicon-ui/atoms/lib';
-
+import Button from '../components/Button';
+import {
+  Text,
+  Box,
+  Input,
+  Checkbox,
+  Data,
+  Datepicker,
+  Image,
+  Item,
+  TableHead,
+  DropdownOption,
+  DropdownSelect
+} from '@silicon-ui/atoms/lib';
+import theme from '../theme';
 export interface HomeProps {}
 
 const Home: FC<HomeProps> = (_props: HomeProps) => {
@@ -42,9 +55,14 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
     setAllRequests([]);
   }
 
+  console.log(theme, 'theme');
   return (
     <div>
-      {!addApi && <Button onPress={() => handleClear()}>Clear</Button>}
+      {/* <Input onTextInput={(e: any) => console.log(e.target.value, 'e')} /> */}
+      {/* <Checkbox onPress={() => console.log('press')} /> */}
+      {/* <TableHead>head</TableHead> */}
+      {/* <Datepicker /> */}
+      {!addApi && <Button>Clear</Button>}
       {!addApi && <RequestsTable requests={allRequests} />}
       {addApi && <AddApi />}
     </div>

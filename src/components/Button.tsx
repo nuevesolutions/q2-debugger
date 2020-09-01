@@ -15,25 +15,19 @@
  */
 
 import React, { FC } from 'react';
-import { ThemeProvider } from 'emotion-theming';
-import theme from './theme';
-import LoggerContext from './contexts/Logger';
-import Messenger from './messenger';
-import Routes from './routes';
+import { Button } from '@silicon-ui/atoms/lib';
+import theme from '../theme';
 
-export interface AppProps {
-  logger: Messenger['logger'];
-}
+export interface ButtonProps {}
 
-const App: FC<AppProps> = (props: AppProps) => {
-  console.log(theme, 'theme');
+const WrappedButton: FC<ButtonProps> = (_props: ButtonProps) => {
   return (
-    <ThemeProvider theme={theme}>
-      <LoggerContext.Provider value={props.logger}>
-        <Routes />
-      </LoggerContext.Provider>
-    </ThemeProvider>
+    <Button
+    //backgroundColor={theme?.secondaryColors}
+    >
+      Clear
+    </Button>
   );
 };
 
-export default App;
+export default WrappedButton;
