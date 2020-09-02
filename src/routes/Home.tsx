@@ -19,6 +19,7 @@ import RequestsTable from './home/containers/RequestsTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
 import Button from '../components/Button';
+import Icon from '../components/Icon';
 import {
   Text,
   Box,
@@ -62,7 +63,11 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
       {/* <Checkbox onPress={() => console.log('press')} /> */}
       {/* <TableHead>head</TableHead> */}
       {/* <Datepicker /> */}
-      {!addApi && <Button>Clear</Button>}
+      {!addApi && (
+        <Box backgroundColor="#eee" border="1px solid gray">
+          <Icon iconname="ban" onClick={() => handleClear()} />
+        </Box>
+      )}
       {!addApi && <RequestsTable requests={allRequests} />}
       {addApi && <AddApi />}
     </div>

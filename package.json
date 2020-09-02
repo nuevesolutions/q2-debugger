@@ -47,6 +47,7 @@
     "@types/react-router-dom": "^5.1.5",
     "core-js": "^3.6.5",
     "emotion-theming": "^10.0.27",
+    "font-awesome": "^4.7.0",
     "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
