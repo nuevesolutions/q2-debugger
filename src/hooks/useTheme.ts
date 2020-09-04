@@ -14,21 +14,6 @@
  * limitations under the License.
  */
 
-import React, { FC } from 'react';
-import { Button } from '@silicon-ui/atoms/lib';
-import theme from '../theme';
-
-export interface ButtonProps {}
-
-const WrappedButton: FC<ButtonProps> = (_props: ButtonProps) => {
-  return (
-    <Button
-      //backgroundColor={theme?.secondaryColors}
-      onPress={() => _props?.onPress()}
-    >
-      Clear
-    </Button>
-  );
-};
-
-export default WrappedButton;
+export default function useTheme(): string {
+  return chrome?.devtools?.panels?.themeName;
+}

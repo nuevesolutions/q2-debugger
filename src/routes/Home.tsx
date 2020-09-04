@@ -18,18 +18,17 @@ import React, { FC, useEffect, useState } from 'react';
 import RequestsTable from './home/containers/RequestsTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
+import useTheme from '../hooks/useTheme';
 import Button from '../components/Button';
-import Icon from '../components/Icon';
+// import Icon from '../components/Icon';
 import {
   Text,
   Box,
   Input,
   Checkbox,
-  Data,
   Datepicker,
   Image,
   Item,
-  TableHead,
   DropdownOption,
   DropdownSelect
 } from '@silicon-ui/atoms/lib';
@@ -37,6 +36,7 @@ import theme from '../theme';
 export interface HomeProps {}
 
 const Home: FC<HomeProps> = (_props: HomeProps) => {
+  const devTheme = useTheme();
   const [requests, setClear] = useRequests();
   const [addApi] = useState(false);
   const [allRequests, setAllRequests] = useState([]);
@@ -56,18 +56,15 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
     setAllRequests([]);
   }
 
-  console.log(theme, 'theme');
   return (
     <div>
+      <p>{devTheme}</p>
       {/* <Input onTextInput={(e: any) => console.log(e.target.value, 'e')} /> */}
       {/* <Checkbox onPress={() => console.log('press')} /> */}
       {/* <TableHead>head</TableHead> */}
       {/* <Datepicker /> */}
-      {!addApi && (
-        <Box backgroundColor="#eee" border="1px solid gray">
-          <Icon iconname="ban" onClick={() => handleClear()} />
-        </Box>
-      )}
+
+      {!addApi && <Button onPress={() => handleClear()}>Clear</Button>}
       {!addApi && <RequestsTable requests={allRequests} />}
       {addApi && <AddApi />}
     </div>
