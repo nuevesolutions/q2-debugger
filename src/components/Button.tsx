@@ -15,20 +15,15 @@
  */
 
 import React, { FC } from 'react';
-import { Button } from '@silicon-ui/atoms/lib';
-import theme from '../theme';
+import {
+  Button as SiliconButton,
+  ButtonProps as SiliconButtonProps
+} from '@silicon-ui/atoms/lib';
 
-export interface ButtonProps {}
+export interface ButtonProps extends SiliconButtonProps {}
 
-const WrappedButton: FC<ButtonProps> = (_props: ButtonProps) => {
-  return (
-    <Button
-      //backgroundColor={theme?.secondaryColors}
-      onPress={() => _props?.onPress()}
-    >
-      Clear
-    </Button>
-  );
+const Button: FC<ButtonProps> = (_props: ButtonProps) => {
+  return <SiliconButton>Clear</SiliconButton>;
 };
 
-export default WrappedButton;
+export default Button;
