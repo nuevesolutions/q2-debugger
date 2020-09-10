@@ -45,100 +45,63 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
 
   function renderRequests(requests: RequestRow[]) {
     return requests.map((request: RequestRow) => (
-      <Row style={{ height: '40px' }} width="100%">
+      <Row key={request.status + request.routingKey + request.url} width="100%">
         <Cell
+          // style={styles.columns.status}
           width="10%"
           backgroundColor="white"
-          borderLeftWidth={1}
           borderTopWidth={1}
+          borderLeftWidth={1}
+          borderBottomWidth={1}
           height={25}
         >
-          Status
+          {request.status}
         </Cell>
         <Cell
+          // style={styles.columns.routingKey}
           width="10%"
           backgroundColor="white"
-          borderLeftWidth={1}
           borderTopWidth={1}
+          borderLeftWidth={1}
+          borderBottomWidth={1}
           height={25}
         >
-          Routing key
+          {request.routingKey}
         </Cell>
         <Cell
+          // style={styles.columns.requestData}
           width="35%"
           backgroundColor="white"
-          borderLeftWidth={1}
           borderTopWidth={1}
+          borderLeftWidth={1}
+          borderBottomWidth={1}
           height={25}
         >
-          Request data
+          <Inspector
+            data={
+              typeof request.requestData === 'string'
+                ? JSON.parse(request.requestData)
+                : request.requestData
+            }
+          />
         </Cell>
         <Cell
+          // style={styles.columns.responseData}
           backgroundColor="white"
-          borderLeftWidth={1}
           borderTopWidth={1}
+          borderLeftWidth={1}
+          borderBottomWidth={1}
           height={25}
         >
-          Response data
+          <Inspector
+            data={
+              typeof request.responseData === 'string'
+                ? JSON.parse(request.responseData)
+                : request.responseData
+            }
+          />
         </Cell>
       </Row>
-      // <Row key={request.status + request.routingKey + request.url} width="100%">
-      //   <Cell
-      //     style={styles.columns.status}
-      //     width="10%"
-      //     backgroundColor="white"
-      //     borderTopWidth={1}
-      //     borderLeftWidth={1}
-      //     borderBottomWidth={1}
-      //     height={25}
-      //   >
-      //     {request.status}
-      //   </Cell>
-      //   <Cell
-      //     style={styles.columns.routingKey}
-      //     width="10%"
-      //     backgroundColor="white"
-      //     borderTopWidth={1}
-      //     borderLeftWidth={1}
-      //     borderBottomWidth={1}
-      //     height={25}
-      //   >
-      //     {request.routingKey}
-      //   </Cell>
-      //   <Cell
-      //     style={styles.columns.requestData}
-      //     width="35%"
-      //     backgroundColor="white"
-      //     borderTopWidth={1}
-      //     borderLeftWidth={1}
-      //     borderBottomWidth={1}
-      //     height={25}
-      //   >
-      //     <Inspector
-      //       data={
-      //         typeof request.requestData === 'string'
-      //           ? JSON.parse(request.requestData)
-      //           : request.requestData
-      //       }
-      //     />
-      //   </Cell>
-      //   <Cell
-      //     style={styles.columns.responseData}
-      //     backgroundColor="white"
-      //     borderTopWidth={1}
-      //     borderLeftWidth={1}
-      //     borderBottomWidth={1}
-      //     height={25}
-      //   >
-      //     <Inspector
-      //       data={
-      //         typeof request.responseData === 'string'
-      //           ? JSON.parse(request.responseData)
-      //           : request.responseData
-      //       }
-      //     />
-      //   </Cell>
-      // </Row>
     ));
   }
 
@@ -203,7 +166,7 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
           </Cell>
         </Row>
 
-        {/* {renderRequests(props.requests)} */}
+        {renderRequests(props.requests)}
       </Table>
     </Box>
   );

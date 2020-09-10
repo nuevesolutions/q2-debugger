@@ -16,7 +16,8 @@
 
 import React, { FC, useEffect, useState, useRef } from 'react';
 // import RequestsTable from './home/containers/RequestsTable';
-import RequestsTable from './home/containers/RequestResizableTable';
+import RequestsTable from './home/containers/RequestsTable';
+import RequestsResizableTable from './home/containers/RequestResizableTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
 import useTheme from '../hooks/useTheme';
@@ -61,14 +62,15 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
   return (
     <div>
       <p>{devTheme}</p>
-      <Table />
+      {/* <Table /> */}
       {/* <Input onTextInput={(e: any) => console.log(e.target.value, 'e')} /> */}
       {/* <Checkbox onPress={() => console.log('press')} /> */}
       {/* <TableHead>head</TableHead> */}
       {/* <Datepicker /> */}
+      {/* {!addApi && <Button onPress={() => handleClear()}>Clear</Button>} */}
+      {!addApi && <RequestsTable requests={allRequests} />}
+      <RequestsResizableTable requests={allRequests} />
 
-      {!addApi && <Button onPress={() => handleClear()}>Clear</Button>}
-      {/* {!addApi && <RequestsTable requests={allRequests} />} */}
       {addApi && <AddApi />}
     </div>
   );
