@@ -14,25 +14,27 @@
  * limitations under the License.
  */
 
-import React, { FC, useEffect, useState } from 'react';
-import RequestsTable from './home/containers/RequestsTable';
+import React, { FC, useEffect, useState, useRef } from 'react';
+// import RequestsTable from './home/containers/RequestsTable';
+import RequestsTable from './home/containers/RequestResizableTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
 import useTheme from '../hooks/useTheme';
 import Button from '../components/Button';
+import Table from '../components/TableResizable';
 // import Icon from '../components/Icon';
-import {
-  Text,
-  Box,
-  Input,
-  Checkbox,
-  Datepicker,
-  Image,
-  Item,
-  DropdownOption,
-  DropdownSelect
-} from '@silicon-ui/atoms/lib';
-import theme from '../theme';
+// import {
+//   Text,
+//   Box,
+//   Input,
+//   Checkbox,
+//   Datepicker,
+//   Image,
+//   Item,
+//   DropdownOption,
+//   DropdownSelect
+// } from '@silicon-ui/atoms/lib';
+// import theme from '../theme';
 export interface HomeProps {}
 
 const Home: FC<HomeProps> = (_props: HomeProps) => {
@@ -59,13 +61,14 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
   return (
     <div>
       <p>{devTheme}</p>
+      <Table />
       {/* <Input onTextInput={(e: any) => console.log(e.target.value, 'e')} /> */}
       {/* <Checkbox onPress={() => console.log('press')} /> */}
       {/* <TableHead>head</TableHead> */}
       {/* <Datepicker /> */}
 
       {!addApi && <Button onPress={() => handleClear()}>Clear</Button>}
-      {!addApi && <RequestsTable requests={allRequests} />}
+      {/* {!addApi && <RequestsTable requests={allRequests} />} */}
       {addApi && <AddApi />}
     </div>
   );
