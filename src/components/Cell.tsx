@@ -19,25 +19,34 @@ import {
   Cell as SiliconCell,
   CellProps as SiliconCellProps
 } from '@silicon-ui/table/lib';
+import useTheme from '../hooks/useTheme';
 
 export interface CellProps extends SiliconCellProps {
   width?: string;
   borderTopWidth?: number;
   borderLeftWidth?: number;
   borderRightWidth?: number;
-  minHeight?: number;
+  height?: number;
   border?: number;
   backgroundColor?: string;
   borderBottomWidth?: number;
   children?: ReactNode;
   borderWidth?: number;
   style?: object;
+  borderColor?: string;
 }
 
 const Cell: FC<CellProps> = (_props: CellProps) => {
-  console.log(_props, 'props');
-
-  return <SiliconCell {..._props}>{_props.children}</SiliconCell>;
+  const debugTheme = useTheme();
+  return (
+    <SiliconCell
+      borderColor={debugTheme === 'dark' ? 'white' : 'black'}
+      backgroundColor={debugTheme === 'dark' ? 'black' : 'white'}
+      {..._props}
+    >
+      {_props.children}
+    </SiliconCell>
+  );
 };
 
 Cell.defaultProps = {};

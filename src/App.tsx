@@ -26,7 +26,6 @@ export interface AppProps {
 }
 
 const App: FC<AppProps> = (props: AppProps) => {
-  console.log(theme, 'theme');
   return (
     <ThemeProvider theme={theme}>
       <LoggerContext.Provider value={props.logger}>

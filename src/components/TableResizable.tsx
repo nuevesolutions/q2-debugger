@@ -22,27 +22,25 @@ const TableResize = () => {
   }, []);
   return (
     <Box>
-      <Table position="absolute" width={width}>
+      {/* <Table position="absolute" width={width}>
         <Row width="100%">
           <Cell
             width="100%"
             borderTopWidth={1}
             borderLeftWidth={1}
             borderRightWidth={1}
-            minHeight={25}
           />
         </Row>
         <Row width="100%">
-          <Cell width="100%" border={1} minHeight={25} />
+          <Cell width="100%" border={1} />
         </Row>
-      </Table>
+      </Table> */}
       <Table width="100%" resizable ref={tableRef}>
         <Row width="100%">
           <Cell
             backgroundColor="white"
             borderLeftWidth={1}
             borderTopWidth={1}
-            minHeight={25}
             width="20%"
           >
             One
@@ -52,16 +50,22 @@ const TableResize = () => {
             borderTopWidth={1}
             borderLeftWidth={1}
             width="20%"
-            minHeight={25}
             style={{ whiteSpace: 'normal' }}
           >
-            Two three four five
+            texas Lorem Ipsum is simply dummy text of the printing and
+            typesetting industry. Lorem Ipsum has been the industrys standard
+            dummy text ever since the 1500s, when an unknown printer took a
+            galley of type and scrambled it to make a type specimen book. It has
+            survived not only five centuries, but also the leap into electronic
+            typesetting, remaining essentially unchanged. It was popularised in
+            the 1960s with the release of Letraset sheets containing Lorem Ipsum
+            passages, a
           </Cell>
           <Cell
             borderTopWidth={1}
             borderLeftWidth={1}
             backgroundColor="white"
-            minHeight={25}
+            width="60%"
           >
             Three
           </Cell>
@@ -73,7 +77,6 @@ const TableResize = () => {
             borderLeftWidth={1}
             borderBottomWidth={1}
             width="20%"
-            minHeight={25}
           >
             Four
           </Cell>
@@ -83,7 +86,6 @@ const TableResize = () => {
             borderLeftWidth={1}
             borderBottomWidth={1}
             width="20%"
-            minHeight={25}
           >
             Five
           </Cell>
@@ -92,7 +94,7 @@ const TableResize = () => {
             borderTopWidth={1}
             borderLeftWidth={1}
             borderBottomWidth={1}
-            minHeight={25}
+            width="60%"
           >
             Six
           </Cell>

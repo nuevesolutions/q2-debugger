@@ -61,16 +61,23 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
 
   return (
     <div>
-      <p>{devTheme}</p>
+      <i
+        className="fa fa-ban"
+        style={{
+          color: devTheme === 'dark' ? 'white' : 'black',
+          fontSize: '20px',
+          cursor: 'pointer'
+        }}
+        onClick={() => handleClear()}
+      ></i>
       {/* <Table /> */}
       {/* <Input onTextInput={(e: any) => console.log(e.target.value, 'e')} /> */}
       {/* <Checkbox onPress={() => console.log('press')} /> */}
       {/* <TableHead>head</TableHead> */}
       {/* <Datepicker /> */}
       {/* {!addApi && <Button onPress={() => handleClear()}>Clear</Button>} */}
-      {!addApi && <RequestsTable requests={allRequests} />}
+      {/* {!addApi && <RequestsTable requests={allRequests} />} */}
       <RequestsResizableTable requests={allRequests} />
-
       {addApi && <AddApi />}
     </div>
   );

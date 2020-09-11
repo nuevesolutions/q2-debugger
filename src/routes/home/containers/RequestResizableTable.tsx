@@ -22,6 +22,7 @@ import Row from '../../../components/Row';
 import Table from '../../../components/Table';
 import Cell from '../../../components/Cell';
 import { Box } from '@silicon-ui/atoms';
+import useTheme from '../../../hooks/useTheme';
 
 export interface RequestsTableProps {
   requests: RequestRow[];
@@ -30,6 +31,7 @@ export interface RequestsTableProps {
 const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   const tableRef = useRef<any>();
   const [width, setWidth] = useState(0);
+  const debugTheme = useTheme();
 
   useEffect(() => {
     setWidth(tableRef.current?.offsetWidth || 0);
@@ -44,40 +46,39 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   }, []);
 
   function renderRequests(requests: RequestRow[]) {
-    return requests.map((request: RequestRow) => (
+    return requests.map((request: RequestRow, index) => (
       <Row key={request.status + request.routingKey + request.url} width="100%">
         <Cell
-          // style={styles.columns.status}
           width="10%"
-          backgroundColor="white"
           borderTopWidth={1}
           borderLeftWidth={1}
-          borderBottomWidth={1}
-          height={25}
-        >
-          {request.status}
-        </Cell>
-        <Cell
-          // style={styles.columns.routingKey}
-          width="10%"
-          backgroundColor="white"
-          borderTopWidth={1}
-          borderLeftWidth={1}
-          borderBottomWidth={1}
-          height={25}
-        >
-          {request.routingKey}
-        </Cell>
-        <Cell
-          // style={styles.columns.requestData}
-          width="35%"
-          backgroundColor="white"
-          borderTopWidth={1}
-          borderLeftWidth={1}
-          borderBottomWidth={1}
-          height={25}
+          borderBottomWidth={requests.length - 1 === index ? 1 : 0}
         >
           <Inspector
+            data={request.status}
+            theme={debugTheme === 'dark' ? 'chromeDark' : 'chromeLight'}
+          />
+        </Cell>
+        <Cell
+          width="10%"
+          borderTopWidth={1}
+          borderLeftWidth={1}
+          borderBottomWidth={requests.length - 1 === index ? 1 : 0}
+        >
+          <Inspector
+            data={request.routingKey}
+            theme={debugTheme === 'dark' ? 'chromeDark' : 'chromeLight'}
+          />
+        </Cell>
+        <Cell
+          width="35%"
+          borderTopWidth={1}
+          borderLeftWidth={1}
+          borderBottomWidth={requests.length - 1 === index ? 1 : 0}
+          style={{ whiteSpace: 'normal' }}
+        >
+          <Inspector
+            theme={debugTheme === 'dark' ? 'chromeDark' : 'chromeLight'}
             data={
               typeof request.requestData === 'string'
                 ? JSON.parse(request.requestData)
@@ -86,14 +87,15 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
           />
         </Cell>
         <Cell
-          // style={styles.columns.responseData}
-          backgroundColor="white"
           borderTopWidth={1}
           borderLeftWidth={1}
-          borderBottomWidth={1}
-          height={25}
+          borderRightWidth={1}
+          borderBottomWidth={requests.length - 1 === index ? 1 : 0}
+          style={{ whiteSpace: 'normal' }}
+          width="45%"
         >
           <Inspector
+            theme={debugTheme === 'dark' ? 'chromeDark' : 'chromeLight'}
             data={
               typeof request.responseData === 'string'
                 ? JSON.parse(request.responseData)
@@ -104,69 +106,74 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
       </Row>
     ));
   }
-
+  const { requests } = props;
   return (
     <Box>
-      <Table position="absolute" width={width}>
+      {/* <Table position="absolute" width={width}>
         <Row width="100%">
           <Cell
             width="100%"
             borderTopWidth={1}
             borderLeftWidth={1}
             borderRightWidth={1}
-            height={25}
+            height={50}
           />
         </Row>
         <Row width="100%">
-          <Cell width="100%" border={1} height={25} />
+          <Cell width="100%" border={1} height={50} />
         </Row>
         <Row width="100%">
-          <Cell width="100%" border={1} height={25} />
+          <Cell width="100%" border={1} height={50} />
         </Row>
         <Row width="100%">
-          <Cell width="100%" border={1} height={25} />
+          <Cell width="100%" border={1} height={50} />
         </Row>
-      </Table>
+      </Table> */}
       <Table style={{ paddingBottom: '10px' }} width="100%" resizable>
         <Row style={{ height: '40px' }} width="100%">
           <Cell
             width="10%"
-            backgroundColor="white"
             borderLeftWidth={1}
             borderTopWidth={1}
-            height={25}
+            borderBottomWidth={requests.length > 0 ? 0 : 1}
           >
-            Status
+            <span style={{ color: debugTheme === 'dark' ? 'white' : 'black' }}>
+              Status
+            </span>
           </Cell>
           <Cell
             width="10%"
-            backgroundColor="white"
             borderLeftWidth={1}
             borderTopWidth={1}
-            height={25}
+            borderBottomWidth={requests.length > 0 ? 0 : 1}
           >
-            Routing key
+            <span style={{ color: debugTheme === 'dark' ? 'white' : 'black' }}>
+              Routing key
+            </span>
           </Cell>
           <Cell
             width="35%"
-            backgroundColor="white"
             borderLeftWidth={1}
             borderTopWidth={1}
-            height={25}
+            borderBottomWidth={requests.length > 0 ? 0 : 1}
           >
-            Request data
+            <span style={{ color: debugTheme === 'dark' ? 'white' : 'black' }}>
+              Request data
+            </span>
           </Cell>
           <Cell
-            backgroundColor="white"
             borderLeftWidth={1}
+            borderRightWidth={1}
             borderTopWidth={1}
-            height={25}
+            borderBottomWidth={requests.length > 0 ? 0 : 1}
+            width="45%"
           >
-            Response data
+            <span style={{ color: debugTheme === 'dark' ? 'white' : 'black' }}>
+              Response data
+            </span>
           </Cell>
         </Row>
-
-        {renderRequests(props.requests)}
+        {renderRequests(requests)}
       </Table>
     </Box>
   );
