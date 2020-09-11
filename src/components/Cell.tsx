@@ -40,8 +40,8 @@ const Cell: FC<CellProps> = (_props: CellProps) => {
   const debugTheme = useTheme();
   return (
     <SiliconCell
-      borderColor={debugTheme === 'dark' ? 'white' : 'black'}
-      backgroundColor={debugTheme === 'dark' ? 'black' : 'white'}
+      borderColor="#aaaaaa"
+      //  backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
       {..._props}
     >
       {_props.children}

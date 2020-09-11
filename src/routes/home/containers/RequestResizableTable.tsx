@@ -50,9 +50,9 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
       <Row key={request.status + request.routingKey + request.url} width="100%">
         <Cell
           width="10%"
-          borderTopWidth={1}
+          // borderTopWidth={1}
           borderLeftWidth={1}
-          borderBottomWidth={requests.length - 1 === index ? 1 : 0}
+          borderBottomWidth={1}
         >
           <Inspector
             data={request.status}
@@ -61,9 +61,9 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
         </Cell>
         <Cell
           width="10%"
-          borderTopWidth={1}
+          // borderTopWidth={1}
           borderLeftWidth={1}
-          borderBottomWidth={requests.length - 1 === index ? 1 : 0}
+          borderBottomWidth={1}
         >
           <Inspector
             data={request.routingKey}
@@ -72,9 +72,9 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
         </Cell>
         <Cell
           width="35%"
-          borderTopWidth={1}
+          // borderTopWidth={1}
           borderLeftWidth={1}
-          borderBottomWidth={requests.length - 1 === index ? 1 : 0}
+          borderBottomWidth={1}
           style={{ whiteSpace: 'normal' }}
         >
           <Inspector
@@ -87,10 +87,10 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
           />
         </Cell>
         <Cell
-          borderTopWidth={1}
+          // borderTopWidth={1}
           borderLeftWidth={1}
           borderRightWidth={1}
-          borderBottomWidth={requests.length - 1 === index ? 1 : 0}
+          borderBottomWidth={1}
           style={{ whiteSpace: 'normal' }}
           width="45%"
         >
@@ -134,41 +134,52 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
           <Cell
             width="10%"
             borderLeftWidth={1}
-            borderTopWidth={1}
-            borderBottomWidth={requests.length > 0 ? 0 : 1}
+            borderBottomWidth={1}
+            backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
           >
-            <span style={{ color: debugTheme === 'dark' ? 'white' : 'black' }}>
+            <span
+              style={{ color: debugTheme === 'dark' ? '#aaaaaa' : 'black' }}
+            >
               Status
             </span>
           </Cell>
           <Cell
             width="10%"
             borderLeftWidth={1}
-            borderTopWidth={1}
-            borderBottomWidth={requests.length > 0 ? 0 : 1}
+            borderBottomWidth={1}
+            // backgroundColor="#eeeeee"
+            backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
           >
-            <span style={{ color: debugTheme === 'dark' ? 'white' : 'black' }}>
+            <span
+              style={{ color: debugTheme === 'dark' ? '#aaaaaa' : 'black' }}
+            >
               Routing key
             </span>
           </Cell>
           <Cell
             width="35%"
             borderLeftWidth={1}
-            borderTopWidth={1}
-            borderBottomWidth={requests.length > 0 ? 0 : 1}
+            borderBottomWidth={1}
+            // backgroundColor="#eeeeee"
+            backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
           >
-            <span style={{ color: debugTheme === 'dark' ? 'white' : 'black' }}>
+            <span
+              style={{ color: debugTheme === 'dark' ? '#aaaaaa' : 'black' }}
+            >
               Request data
             </span>
           </Cell>
           <Cell
             borderLeftWidth={1}
             borderRightWidth={1}
-            borderTopWidth={1}
-            borderBottomWidth={requests.length > 0 ? 0 : 1}
+            borderBottomWidth={1}
+            // backgroundColor="#eeeeee"
+            backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
             width="45%"
           >
-            <span style={{ color: debugTheme === 'dark' ? 'white' : 'black' }}>
+            <span
+              style={{ color: debugTheme === 'dark' ? '#aaaaaa' : 'black' }}
+            >
               Response data
             </span>
           </Cell>
