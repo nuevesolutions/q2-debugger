@@ -64,7 +64,7 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
       <i
         className="fa fa-ban"
         style={{
-          color: devTheme === 'dark' ? 'white' : 'black',
+          color: devTheme === 'dark' ? '#aaaaaa' : 'black',
           fontSize: '20px',
           cursor: 'pointer'
         }}
