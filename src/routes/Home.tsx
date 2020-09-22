@@ -65,8 +65,9 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
         className="fa fa-ban"
         style={{
           color: devTheme === 'dark' ? '#aaaaaa' : 'black',
-          fontSize: '20px',
-          cursor: 'pointer'
+          fontSize: '17px',
+          cursor: 'pointer',
+          transform: 'scaleX(-1)'
         }}
         onClick={() => handleClear()}
       ></i>

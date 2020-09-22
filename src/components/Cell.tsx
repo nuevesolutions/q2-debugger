@@ -43,6 +43,7 @@ const Cell: FC<CellProps> = (_props: CellProps) => {
       borderColor="#aaaaaa"
       //  backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
       {..._props}
+      style={{ whiteSpace: 'normal', overflowWrap: 'break-word' }}
     >
       {_props.children}
     </SiliconCell>
