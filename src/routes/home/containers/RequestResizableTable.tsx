@@ -20,7 +20,8 @@ import { RequestRow } from '../../../types';
 import Row from '../../../components/Row';
 import Table from '../../../components/Table';
 import Cell from '../../../components/Cell';
-import { Box } from '@silicon-ui/atoms/lib';
+import Box from '../../../components/Box';
+// import { Box } from '@silicon-ui/atoms/lib';
 import useTheme from '../../../hooks/useTheme';
 
 export interface RequestsTableProps {
@@ -28,21 +29,7 @@ export interface RequestsTableProps {
 }
 
 const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
-  // const tableRef = useRef<any>();
-  // const [width, setWidth] = useState(0);
   const debugTheme = useTheme();
-
-  // useEffect(() => {
-  //   setWidth(tableRef.current?.offsetWidth || 0);
-  // }, [tableRef]);
-
-  // useEffect(() => {
-  //   function handleResize() {
-  //     setWidth(tableRef.current?.offsetWidth || 0);
-  //   }
-  //   window.addEventListener('resize', handleResize);
-  //   return () => window.removeEventListener('resize', handleResize);
-  // }, []);
 
   function renderRequests(requests: RequestRow[]) {
     return requests.map((request: RequestRow, index) => (

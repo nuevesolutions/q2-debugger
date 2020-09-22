@@ -23,6 +23,7 @@ import useRequests from '../hooks/useRequests';
 import useTheme from '../hooks/useTheme';
 import Button from '../components/Button';
 import Table from '../components/TableResizable';
+import ReactTable from './home/containers/ReactTable';
 // import Icon from '../components/Icon';
 // import {
 //   Text,
@@ -71,6 +72,7 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
         }}
         onClick={() => handleClear()}
       ></i>
+      <ReactTable requests={allRequests} />
       {/* <Table /> */}
       {/* <Input onTextInput={(e: any) => console.log(e.target.value, 'e')} /> */}
       {/* <Checkbox onPress={() => console.log('press')} /> */}
@@ -78,7 +80,7 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
       {/* <Datepicker /> */}
       {/* {!addApi && <Button onPress={() => handleClear()}>Clear</Button>} */}
       {/* {!addApi && <RequestsTable requests={allRequests} />} */}
-      <RequestsResizableTable requests={allRequests} />
+      {/* <RequestsResizableTable requests={allRequests} /> */}
       {addApi && <AddApi />}
     </div>
   );
