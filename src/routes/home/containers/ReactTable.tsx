@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useTable } from 'react-table';
 import { Inspector } from 'react-inspector';
 import { RequestRow } from '../../../types';
@@ -13,7 +13,8 @@ export interface RequestsTableProps {
 
 const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   const { requests } = props;
-
+  const [hoverCell, setHoverCell] = useState('');
+  const [hoverRow, setHoverRow] = useState('');
   const data = React.useMemo(() => requests, [requests]);
 
   const columns = React.useMemo(
@@ -50,7 +51,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
     prepareRow
   } = useTable({ columns, data });
 
-  const handleClick = (e, value) => {
+  const handleClick = (e: any, value: string) => {
     const copiedText = document.createElement('textarea');
     copiedText.value = value;
     copiedText.setAttribute('readonly', '');
@@ -60,7 +61,6 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
     copiedText.select();
     document.execCommand('copy');
     document.body.removeChild(copiedText);
-
     e.preventDefault();
   };
 
@@ -74,7 +74,16 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                 return (
                   <Cell
                     width={column?.width as string}
+                    // backgroundColor="#e6e6e6"
+                    onMouseEnter={() => setHoverCell(column.id)}
+                    onMouseLeave={() => setHoverCell('')}
+                    backgroundColor={
+                      hoverCell !== column.id ? '#f3f3f3' : '#e6e6e6'
+                    }
                     height={20}
+                    paddingLeft={1}
+                    paddingTop={1}
+                    paddingBottom={1}
                     borderLeftWidth={1}
                     borderBottomWidth={1}
                     borderTopWidth={1}
@@ -88,10 +97,17 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {rows.map((row, index) => {
             prepareRow(row);
             return (
-              <Row width="100%" {...row.getRowProps()}>
+              <Row
+                width="100%"
+                {...row.getRowProps()}
+                // backgroundColor={hoverRow !== row.id ? '#f3f3f3' : '#f1f6fd'}
+                height={index === rows.length - 1 ? '100vh' : '0vh'}
+                onMouseEnter={() => setHoverRow(row.id)}
+                onMouseLeave={() => setHoverRow('')}
+              >
                 {row.cells.map((cell) => {
                   return (
                     <Cell
@@ -99,6 +115,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                       onContextMenu={(e) => handleClick(e, cell.value)}
                       borderLeftWidth={1}
                       borderBottomWidth={1}
+                      paddingLeft={1}
                       // backgroundColor="red"
                     >
                       {!(

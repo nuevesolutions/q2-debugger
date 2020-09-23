@@ -21,7 +21,8 @@ import RequestsResizableTable from './home/containers/RequestResizableTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
 import useTheme from '../hooks/useTheme';
-import Button from '../components/Button';
+import Icon from '../components/Icon';
+import Box from '../components/Box';
 import Table from '../components/TableResizable';
 import ReactTable from './home/containers/ReactTable';
 // import Icon from '../components/Icon';
@@ -62,17 +63,9 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
 
   return (
     <div>
-      <i
-        className="fa fa-ban"
-        style={{
-          color: devTheme === 'dark' ? '#aaaaaa' : 'black',
-          fontSize: '17px',
-          cursor: 'pointer',
-          transform: 'scaleX(-1)'
-        }}
-        onClick={() => handleClear()}
-      ></i>
-
+      <Box padding={1} backgroundColor="#f3f3f3" border="1px solid #cccccc">
+        <Icon iconName="ban" onClick={() => handleClear()} />
+      </Box>
       <ReactTable requests={allRequests} />
       {/* <Table /> */}
       {/* <Input onTextInput={(e: any) => console.log(e.target.value, 'e')} /> */}

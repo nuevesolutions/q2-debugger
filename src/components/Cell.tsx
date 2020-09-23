@@ -42,12 +42,14 @@ const Cell: FC<CellProps> = (_props: CellProps) => {
   const debugTheme = useTheme();
   return (
     <SiliconCell
-      borderColor="#aaaaaa"
+      borderColor="#cccccc"
       // backgroundColor={debugTheme === 'dark' ? 'transparent' : 'red'}
       {..._props}
       style={{ whiteSpace: 'normal', overflowWrap: 'break-word' }}
     >
-      {_props.children}
+      <span style={{ fontSize: '13px', color: '#0F0F10' }}>
+        {_props.children}
+      </span>
     </SiliconCell>
   );
 };
