@@ -50,6 +50,20 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
     prepareRow
   } = useTable({ columns, data });
 
+  const handleClick = (e, value) => {
+    const copiedText = document.createElement('textarea');
+    copiedText.value = value;
+    copiedText.setAttribute('readonly', '');
+    copiedText.style.position = 'absolute';
+    copiedText.style.left = '-9999px';
+    document.body.appendChild(copiedText);
+    copiedText.select();
+    document.execCommand('copy');
+    document.body.removeChild(copiedText);
+
+    e.preventDefault();
+  };
+
   return (
     <Box maxWidth="100%" overflowX="hidden" overflowY="visible">
       <Table width="100%" resizable {...getTableProps()}>
@@ -81,6 +95,8 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                 {row.cells.map((cell) => {
                   return (
                     <Cell
+                      id="myCell"
+                      onContextMenu={(e) => handleClick(e, cell.value)}
                       borderLeftWidth={1}
                       borderBottomWidth={1}
                       // backgroundColor="red"

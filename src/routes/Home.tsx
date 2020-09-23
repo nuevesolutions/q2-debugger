@@ -72,6 +72,7 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
         }}
         onClick={() => handleClear()}
       ></i>
+
       <ReactTable requests={allRequests} />
       {/* <Table /> */}
       {/* <Input onTextInput={(e: any) => console.log(e.target.value, 'e')} /> */}

@@ -34,6 +34,8 @@ export interface CellProps extends SiliconCellProps {
   borderWidth?: number;
   style?: object;
   borderColor?: string;
+  id?: string;
+  onContextMenu?: (e: any) => void;
 }
 
 const Cell: FC<CellProps> = (_props: CellProps) => {
