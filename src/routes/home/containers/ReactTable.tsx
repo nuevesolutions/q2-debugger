@@ -17,7 +17,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   const [hoverRow, setHoverRow] = useState('');
   const data = React.useMemo(() => requests, [requests]);
 
-  const columns = React.useMemo(
+  const columns: any = React.useMemo(
     () => [
       {
         Header: 'Status',

@@ -24,6 +24,9 @@ export interface RowProps extends SiliconRowProps {
   children?: ReactNode;
   width?: string;
   style?: object;
+  height?: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const Row: FC<RowProps> = (_props: RowProps) => {
