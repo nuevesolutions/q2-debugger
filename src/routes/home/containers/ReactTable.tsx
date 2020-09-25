@@ -85,7 +85,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
 
   const handleClick = (e: any, value: string) => {
     const copiedText = document.createElement('textarea');
-    copiedText.value = value;
+    copiedText.value = JSON.stringify(value);
     if (value) {
       setTooltip(true);
     }

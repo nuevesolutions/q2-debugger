@@ -54,7 +54,7 @@ const Cell: FC<CellProps> = (_props: CellProps) => {
       {..._props}
       style={{ whiteSpace: 'normal', overflowWrap: 'break-word' }}
     >
-      <span style={{ fontSize: '13px', color: theme?.cellTextColor }}>
+      <span style={{ fontSize: '12px', color: theme?.cellTextColor }}>
         {_props.children}
       </span>
     </SiliconCell>
