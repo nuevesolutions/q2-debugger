@@ -45,16 +45,16 @@ export interface CellProps extends SiliconCellProps {
 }
 
 const Cell: FC<CellProps> = (_props: CellProps) => {
-  const debugTheme = useTheme();
+  const theme = useTheme();
   return (
     <SiliconCell
-      borderColor="#cdcdcd"
+      borderColor={theme?.borderColor}
       // borderLeftColor="#e1e1e1"
       // backgroundColor={debugTheme === 'dark' ? 'transparent' : 'red'}
       {..._props}
       style={{ whiteSpace: 'normal', overflowWrap: 'break-word' }}
     >
-      <span style={{ fontSize: '13px', color: '#353e47' }}>
+      <span style={{ fontSize: '13px', color: theme?.cellTextColor }}>
         {_props.children}
       </span>
     </SiliconCell>

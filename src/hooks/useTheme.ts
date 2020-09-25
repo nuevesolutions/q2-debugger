@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
-export default function useTheme(): string {
-  return chrome?.devtools?.panels?.themeName;
+import lightTheme from '../themes/light';
+import darkTheme from '../themes/dark';
+
+export default function useTheme(): any {
+  const devToolsTheme: string = chrome?.devtools?.panels?.themeName;
+  if (devToolsTheme !== 'dark') {
+    return lightTheme;
+  } else {
+    return darkTheme;
+  }
+  // return chrome?.devtools?.panels?.themeName;
 }

@@ -17,7 +17,7 @@
 import React, { FC, useEffect, useState, useRef } from 'react';
 // import RequestsTable from './home/containers/RequestsTable';
 import RequestsTable from './home/containers/RequestsTable';
-import RequestsResizableTable from './home/containers/RequestResizableTable';
+// import RequestsResizableTable from './home/containers/RequestResizableTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
 import useTheme from '../hooks/useTheme';
@@ -29,7 +29,7 @@ import ReactTable from './home/containers/ReactTable';
 export interface HomeProps {}
 
 const Home: FC<HomeProps> = (_props: HomeProps) => {
-  const devTheme = useTheme();
+  const theme = useTheme();
   const [requests, setClear] = useRequests();
   // const [addApi] = useState(false);
   const [allRequests, setAllRequests] = useState([]);
@@ -51,7 +51,11 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
 
   return (
     <div>
-      <Box padding={1} backgroundColor="#f3f3f3" border="1px solid #cdcdcd">
+      <Box
+        padding={1}
+        backgroundColor={theme.clearContainerBg}
+        border={theme.clearContainerBorder}
+      >
         <Icon iconName="ban" onClick={() => handleClear()} />
       </Box>
       <ReactTable requests={allRequests} />

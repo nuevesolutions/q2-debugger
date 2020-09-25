@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect, useLayoutEffect } from 'react';
 import { useTable } from 'react-table';
 import { Inspector, chromeLight } from 'react-inspector';
 import { RequestRow } from '../../../types';
+import useTheme from '../../../hooks/useTheme';
 import Table from '../../../components/Table';
 import Cell from '../../../components/Cell';
 import Row from '../../../components/Row';
@@ -33,6 +34,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   const [hoverRow, setHoverRow] = useState('');
   const [lastRowHeight, setLastRowHeight] = useState(20);
   const [toolTip, setTooltip] = useState(false);
+  const theme = useTheme();
 
   const data = React.useMemo(() => [...requests], [requests]);
 
@@ -74,13 +76,16 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
 
   useEffect(() => {
     const rowHeight = document.getElementById('row')?.clientHeight;
-    if (rowHeight) setLastRowHeight(height - rowHeight - 65);
-  }, [rows, height, inspector]);
+    if (rowHeight && requests.length > 0) {
+      setLastRowHeight(height - rowHeight - 62);
+    } else {
+      setLastRowHeight(height - 62);
+    }
+  }, [rows, height, inspector, requests]);
 
   const handleClick = (e: any, value: string) => {
     const copiedText = document.createElement('textarea');
     copiedText.value = value;
-
     if (value) {
       setTooltip(true);
     }
@@ -108,11 +113,12 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                   return (
                     <Cell
                       width={column?.width as string}
-                      // backgroundColor="#e6e6e6"
                       onMouseEnter={() => setHoverCell(column.id)}
                       onMouseLeave={() => setHoverCell('')}
                       backgroundColor={
-                        hoverCell !== column.id ? '#f3f3f3' : '#e6e6e6'
+                        hoverCell !== column.id
+                          ? theme.headerCellBg
+                          : theme.hoverHeaderCellBg
                       }
                       height={20}
                       paddingLeft={1}
@@ -140,9 +146,9 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                   backgroundColor={
                     hoverRow !== row?.id
                       ? index % 2
-                        ? '#ffffff'
-                        : '#f5f5f5'
-                      : '#f1f6fd'
+                        ? theme.evenRowBg
+                        : theme.oddRowBg
+                      : theme.hoverRowBg
                   }
                   onMouseEnter={() => setHoverRow(row.id)}
                   onMouseLeave={() => setHoverRow('')}
@@ -166,7 +172,10 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                                 <Inspector
                                   theme={{
                                     ...chromeLight,
-                                    ...{ BASE_BACKGROUND_COLOR: 'transparent' }
+                                    ...{
+                                      BASE_BACKGROUND_COLOR: 'transparent',
+                                      BASE_COLOR: theme.cellTextColor
+                                    }
                                   }}
                                   data={
                                     typeof cell.value === 'string'
@@ -185,7 +194,11 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
             })}
           </tbody>
           {headerGroups.map((headerGroup) => (
-            <Row width="100%" {...headerGroup.getHeaderGroupProps()}>
+            <Row
+              width="100%"
+              {...headerGroup.getHeaderGroupProps()}
+              backgroundColor={theme.evenRowBg}
+            >
               {headerGroup.headers.map((column) => {
                 return (
                   <Cell
