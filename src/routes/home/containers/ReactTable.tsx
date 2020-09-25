@@ -31,6 +31,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   const [hoverCell, setHoverCell] = useState('');
   const [hoverRow, setHoverRow] = useState('');
   const [lastRowHeight, setLastRowHeight] = useState(20);
+  const [toolTip, setTooltip] = useState(false);
 
   const data = React.useMemo(
     () => [
@@ -39,6 +40,8 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
     ],
     [requests]
   );
+
+  useEffect(() => {}, [toolTip]);
 
   const columns: any = React.useMemo(
     () => [
@@ -82,6 +85,10 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   const handleClick = (e: any, value: string) => {
     const copiedText = document.createElement('textarea');
     copiedText.value = value;
+
+    if (value) {
+      setTooltip(true);
+    }
     copiedText.setAttribute('readonly', '');
     copiedText.style.position = 'absolute';
     copiedText.style.left = '-9999px';
@@ -90,6 +97,9 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
     document.execCommand('copy');
     document.body.removeChild(copiedText);
     e.preventDefault();
+    setTimeout(() => {
+      setTooltip(false);
+    }, 2000);
   };
 
   return (
@@ -197,6 +207,26 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
               })}
             </Row>
           ))}
+          {toolTip ? (
+            <div
+              style={{
+                visibility: 'visible',
+                minWidth: '200px',
+                marginLeft: '-125px',
+                backgroundColor: '#333',
+                color: '#fff',
+                textAlign: 'center',
+                borderRadius: '2px',
+                padding: '10px',
+                position: 'fixed',
+                left: '50%',
+                bottom: '30px',
+                fontSize: '17px'
+              }}
+            >
+              copied to clipboard!
+            </div>
+          ) : null}
         </Table>
       </Box>
     </div>
