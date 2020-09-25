@@ -33,13 +33,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   const [lastRowHeight, setLastRowHeight] = useState(20);
   const [toolTip, setTooltip] = useState(false);
 
-  const data = React.useMemo(
-    () => [
-      ...requests
-      // { status: '', routingKey: '', requestData: null, responseData: null }
-    ],
-    [requests]
-  );
+  const data = React.useMemo(() => [...requests], [requests]);
 
   useEffect(() => {}, [toolTip]);
 
@@ -142,7 +136,6 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                 <Row
                   width="100%"
                   {...row.getRowProps()}
-                  // backgroundColor={index % 2 ? 'red' : 'green'}
                   backgroundColor={
                     hoverRow !== row?.id
                       ? index % 2
@@ -150,7 +143,6 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                         : '#f5f5f5'
                       : '#f1f6fd'
                   }
-                  // height={index === rows.length - 1 ? '100vh' : '20px'}
                   onMouseEnter={() => setHoverRow(row.id)}
                   onMouseLeave={() => setHoverRow('')}
                 >
@@ -163,7 +155,6 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                         borderLeftWidth={0.5}
                         paddingLeft={1}
                         height={20}
-                        // backgroundColor="red"
                       >
                         {!(
                           cell.column.id === 'status' ||
@@ -201,7 +192,6 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                     height={lastRowHeight}
                     paddingBottom={1}
                     borderLeftWidth={0.5}
-                    // borderBottomWidth={1}
                   ></Cell>
                 );
               })}
