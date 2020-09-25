@@ -51,7 +51,7 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
 
   return (
     <div>
-      <Box padding={1} backgroundColor="#f3f3f3" border="1px solid #cccccc">
+      <Box padding={1} backgroundColor="#f3f3f3" border="1px solid #cdcdcd">
         <Icon iconName="ban" onClick={() => handleClear()} />
       </Box>
       <ReactTable requests={allRequests} />
