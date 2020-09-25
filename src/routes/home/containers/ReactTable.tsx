@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, useLayoutEffect } from 'react';
 import { useTable } from 'react-table';
-import { Inspector, chromeLight } from 'react-inspector';
+import { Inspector, chromeLight, chromeDark } from 'react-inspector';
 import { RequestRow } from '../../../types';
 import Table from '../../../components/Table';
 import Cell from '../../../components/Cell';
