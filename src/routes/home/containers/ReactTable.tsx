@@ -6,6 +6,7 @@ import Table from '../../../components/Table';
 import Cell from '../../../components/Cell';
 import Row from '../../../components/Row';
 import Box from '../../../components/Box';
+import Toast from '../../../components/Toast';
 
 export interface RequestsTableProps {
   requests: RequestRow[];
@@ -207,26 +208,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
               })}
             </Row>
           ))}
-          {toolTip ? (
-            <div
-              style={{
-                visibility: 'visible',
-                minWidth: '200px',
-                marginLeft: '-125px',
-                backgroundColor: '#333',
-                color: '#fff',
-                textAlign: 'center',
-                borderRadius: '2px',
-                padding: '10px',
-                position: 'fixed',
-                left: '50%',
-                bottom: '30px',
-                fontSize: '17px'
-              }}
-            >
-              copied to clipboard!
-            </div>
-          ) : null}
+          {toolTip ? <Toast /> : null}
         </Table>
       </Box>
     </div>
