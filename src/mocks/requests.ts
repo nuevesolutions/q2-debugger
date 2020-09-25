@@ -38,6 +38,13 @@ const requests: RequestRow[] = [
     routingKey: 'hello',
     status: 500,
     url: 'https://siliconhills.dev'
+  },
+  {
+    requestData: '{}',
+    responseData: '{}',
+    routingKey: 'hello',
+    status: 500,
+    url: 'https://example.com'
   }
 ];
 
