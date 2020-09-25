@@ -1,6 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect, useLayoutEffect } from 'react';
 import { useTable } from 'react-table';
-import { Inspector } from 'react-inspector';
+import { Inspector, chromeLight } from 'react-inspector';
 import { RequestRow } from '../../../types';
 import Table from '../../../components/Table';
 import Cell from '../../../components/Cell';
@@ -11,11 +11,34 @@ export interface RequestsTableProps {
   requests: RequestRow[];
 }
 
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+}
+
 const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   const { requests } = props;
+  const [width, height] = useWindowSize();
+  const [inspector, setInspector] = useState(false);
   const [hoverCell, setHoverCell] = useState('');
   const [hoverRow, setHoverRow] = useState('');
-  const data = React.useMemo(() => requests, [requests]);
+  const [lastRowHeight, setLastRowHeight] = useState(20);
+
+  const data = React.useMemo(
+    () => [
+      ...requests
+      // { status: '', routingKey: '', requestData: null, responseData: null }
+    ],
+    [requests]
+  );
 
   const columns: any = React.useMemo(
     () => [
@@ -37,7 +60,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
       {
         Header: 'Response Data',
         accessor: 'responseData',
-        width: '40%'
+        width: ''
       }
     ],
     []
@@ -50,6 +73,11 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
     rows,
     prepareRow
   } = useTable({ columns, data });
+
+  useEffect(() => {
+    const rowHeight = document.getElementById('row')?.clientHeight;
+    if (rowHeight) setLastRowHeight(height - rowHeight - 65);
+  }, [rows, height, inspector]);
 
   const handleClick = (e: any, value: string) => {
     const copiedText = document.createElement('textarea');
@@ -65,82 +93,113 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   };
 
   return (
-    <Box maxWidth="100%" overflowX="hidden" overflowY="visible">
-      <Table width="100%" resizable {...getTableProps()}>
-        <thead>
+    <div>
+      <Box maxWidth="100%" overflowX="hidden" overflowY="visible">
+        <Table width="100%" resizable {...getTableProps()}>
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <Row width="100%" {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => {
+                  return (
+                    <Cell
+                      width={column?.width as string}
+                      // backgroundColor="#e6e6e6"
+                      onMouseEnter={() => setHoverCell(column.id)}
+                      onMouseLeave={() => setHoverCell('')}
+                      backgroundColor={
+                        hoverCell !== column.id ? '#f3f3f3' : '#e6e6e6'
+                      }
+                      height={20}
+                      paddingLeft={1}
+                      paddingTop={1}
+                      paddingBottom={1}
+                      borderLeftWidth={0.5}
+                      borderBottomWidth={1}
+                      borderTopWidth={1}
+                      {...column.getHeaderProps()}
+                    >
+                      {column.render('Header')}
+                    </Cell>
+                  );
+                })}
+              </Row>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()} id="row">
+            {rows.map((row, index) => {
+              prepareRow(row);
+              return (
+                <Row
+                  width="100%"
+                  {...row.getRowProps()}
+                  // backgroundColor={index % 2 ? 'red' : 'green'}
+                  backgroundColor={
+                    hoverRow !== row?.id
+                      ? index % 2
+                        ? '#ffffff'
+                        : '#f5f5f5'
+                      : '#f1f6fd'
+                  }
+                  // height={index === rows.length - 1 ? '100vh' : '20px'}
+                  onMouseEnter={() => setHoverRow(row.id)}
+                  onMouseLeave={() => setHoverRow('')}
+                >
+                  {row.cells.map((cell) => {
+                    return (
+                      <Cell
+                        id="myCell"
+                        onClick={() => setInspector(!inspector)}
+                        onContextMenu={(e) => handleClick(e, cell.value)}
+                        borderLeftWidth={0.5}
+                        paddingLeft={1}
+                        height={20}
+                        // backgroundColor="red"
+                      >
+                        {!(
+                          cell.column.id === 'status' ||
+                          cell.column.id === 'routingKey'
+                        )
+                          ? cell?.value !== null && (
+                              <Box paddingTop={1}>
+                                <Inspector
+                                  theme={{
+                                    ...chromeLight,
+                                    ...{ BASE_BACKGROUND_COLOR: 'transparent' }
+                                  }}
+                                  data={
+                                    typeof cell.value === 'string'
+                                      ? JSON.parse(cell.value)
+                                      : cell.value
+                                  }
+                                />
+                              </Box>
+                            )
+                          : cell.value}
+                      </Cell>
+                    );
+                  })}
+                </Row>
+              );
+            })}
+          </tbody>
           {headerGroups.map((headerGroup) => (
             <Row width="100%" {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => {
                 return (
                   <Cell
                     width={column?.width as string}
-                    // backgroundColor="#e6e6e6"
-                    onMouseEnter={() => setHoverCell(column.id)}
-                    onMouseLeave={() => setHoverCell('')}
-                    backgroundColor={
-                      hoverCell !== column.id ? '#f3f3f3' : '#e6e6e6'
-                    }
-                    height={20}
-                    paddingLeft={1}
-                    paddingTop={1}
+                    height={lastRowHeight}
                     paddingBottom={1}
-                    borderLeftWidth={1}
-                    borderBottomWidth={1}
-                    borderTopWidth={1}
-                    {...column.getHeaderProps()}
-                  >
-                    {column.render('Header')}
-                  </Cell>
+                    borderLeftWidth={0.5}
+                    // borderBottomWidth={1}
+                  ></Cell>
                 );
               })}
             </Row>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, index) => {
-            prepareRow(row);
-            return (
-              <Row
-                width="100%"
-                {...row.getRowProps()}
-                // backgroundColor={hoverRow !== row.id ? '#f3f3f3' : '#f1f6fd'}
-                height={index === rows.length - 1 ? '100vh' : '0vh'}
-                onMouseEnter={() => setHoverRow(row.id)}
-                onMouseLeave={() => setHoverRow('')}
-              >
-                {row.cells.map((cell) => {
-                  return (
-                    <Cell
-                      id="myCell"
-                      onContextMenu={(e) => handleClick(e, cell.value)}
-                      borderLeftWidth={1}
-                      borderBottomWidth={1}
-                      paddingLeft={1}
-                      // backgroundColor="red"
-                    >
-                      {!(
-                        cell.column.id === 'status' ||
-                        cell.column.id === 'routingKey'
-                      ) ? (
-                        <Inspector
-                          data={
-                            typeof cell.value === 'string'
-                              ? JSON.parse(cell.value)
-                              : cell.value
-                          }
-                        />
-                      ) : (
-                        cell.value
-                      )}
-                    </Cell>
-                  );
-                })}
-              </Row>
-            );
-          })}
-        </tbody>
-      </Table>
-    </Box>
+        </Table>
+      </Box>
+    </div>
   );
 };
 

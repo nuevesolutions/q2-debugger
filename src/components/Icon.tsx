@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from '@emotion/styled';
 import useTheme from '../hooks/useTheme';
 
@@ -24,6 +24,7 @@ export interface IconProps {
 }
 
 const Icon: FC<IconProps> = (_props: IconProps) => {
+  const [entered, setEntered] = useState(false);
   const devTheme = useTheme();
   const { iconName, onClick } = _props;
 
@@ -37,9 +38,12 @@ const Icon: FC<IconProps> = (_props: IconProps) => {
     <i
       className={className}
       title="Clear"
+      onMouseEnter={() => setEntered(true)}
+      onMouseLeave={() => setEntered(false)}
       style={{
-        color: devTheme === 'dark' ? '#aaaaaa' : '#333333',
-        opacity: 0.85,
+        // color: devTheme === 'dark' ? '#aaaaaa' : '#6e6e6e',
+        color: entered ? '' : '#32312d',
+        opacity: 0.8,
         fontSize: '16px',
         cursor: 'pointer',
         transform: 'scaleX(-1)'

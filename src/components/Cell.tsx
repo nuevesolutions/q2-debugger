@@ -41,6 +41,7 @@ export interface CellProps extends SiliconCellProps {
   paddingLeft?: number;
   paddingTop?: number;
   paddingBottom?: number;
+  onClick?: () => void;
 }
 
 const Cell: FC<CellProps> = (_props: CellProps) => {

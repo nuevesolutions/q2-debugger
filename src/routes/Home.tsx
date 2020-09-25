@@ -25,25 +25,13 @@ import Icon from '../components/Icon';
 import Box from '../components/Box';
 import Table from '../components/TableResizable';
 import ReactTable from './home/containers/ReactTable';
-// import Icon from '../components/Icon';
-// import {
-//   Text,
-//   Box,
-//   Input,
-//   Checkbox,
-//   Datepicker,
-//   Image,
-//   Item,
-//   DropdownOption,
-//   DropdownSelect
-// } from '@silicon-ui/atoms/lib';
 // import theme from '../theme';
 export interface HomeProps {}
 
 const Home: FC<HomeProps> = (_props: HomeProps) => {
   const devTheme = useTheme();
   const [requests, setClear] = useRequests();
-  const [addApi] = useState(false);
+  // const [addApi] = useState(false);
   const [allRequests, setAllRequests] = useState([]);
 
   useEffect(() => {
@@ -68,14 +56,8 @@ const Home: FC<HomeProps> = (_props: HomeProps) => {
       </Box>
       <ReactTable requests={allRequests} />
       {/* <Table /> */}
-      {/* <Input onTextInput={(e: any) => console.log(e.target.value, 'e')} /> */}
-      {/* <Checkbox onPress={() => console.log('press')} /> */}
-      {/* <TableHead>head</TableHead> */}
-      {/* <Datepicker /> */}
-      {/* {!addApi && <Button onPress={() => handleClear()}>Clear</Button>} */}
-      {/* {!addApi && <RequestsTable requests={allRequests} />} */}
       {/* <RequestsResizableTable requests={allRequests} /> */}
-      {addApi && <AddApi />}
+      {/* {addApi && <AddApi />} */}
     </div>
   );
 };

@@ -60,7 +60,7 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
           borderLeftWidth={1}
           borderRightWidth={1}
           borderBottomWidth={1}
-          width="40%"
+          // width="40%"
         >
           <Inspector
             theme={debugTheme === 'dark' ? 'chromeDark' : 'chromeLight'}
@@ -124,7 +124,7 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
             </span>
           </Cell>
           <Cell
-            width="40%"
+            // width="40%"
             borderLeftWidth={1}
             borderBottomWidth={1}
             backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
@@ -138,6 +138,56 @@ const RequestsTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
           </Cell>
         </Row>
         {renderRequests(requests)}
+        <Row width="100%" style={{ backgroundColor: 'red' }}>
+          <Cell
+            width="10%"
+            borderLeftWidth={1}
+            borderBottomWidth={1}
+            backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
+          >
+            <span
+              style={{ color: debugTheme === 'dark' ? '#aaaaaa' : 'black' }}
+            >
+              Status
+            </span>
+          </Cell>
+          <Cell
+            width="10%"
+            borderLeftWidth={1}
+            borderBottomWidth={1}
+            backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
+          >
+            <span
+              style={{ color: debugTheme === 'dark' ? '#aaaaaa' : 'black' }}
+            >
+              Routing key
+            </span>
+          </Cell>
+          <Cell
+            width="40%"
+            borderLeftWidth={1}
+            borderBottomWidth={1}
+            backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
+          >
+            <span
+              style={{ color: debugTheme === 'dark' ? '#aaaaaa' : 'black' }}
+            >
+              Request Data
+            </span>
+          </Cell>
+          <Cell
+            // width="40%"
+            borderLeftWidth={1}
+            borderBottomWidth={1}
+            backgroundColor={debugTheme === 'dark' ? 'transparent' : '#eeeeee'}
+          >
+            <span
+              style={{ color: debugTheme === 'dark' ? '#aaaaaa' : 'black' }}
+            >
+              Response Data
+            </span>
+          </Cell>
+        </Row>
       </Table>
     </Box>
   );

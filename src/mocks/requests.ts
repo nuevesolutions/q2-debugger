@@ -37,7 +37,6 @@ const requests: RequestRow[] = [
     responseData: '{"hello": "world"}',
     routingKey: 'hello',
     status: 500,
-
     url: 'https://siliconhills.dev'
   }
 ];
