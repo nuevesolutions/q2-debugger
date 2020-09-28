@@ -23,6 +23,16 @@ export interface IconProps {
   onClick?: () => void;
 }
 
+export const styles = {
+  icon: {
+    opacity: 0.8,
+    fontSize: '16px',
+    paddingTop: '4px',
+    cursor: 'pointer',
+    transform: 'scaleX(-1)'
+  }
+};
+
 const Icon: FC<IconProps> = (_props: IconProps) => {
   const [entered, setEntered] = useState(false);
   const theme = useTheme();
@@ -42,12 +52,8 @@ const Icon: FC<IconProps> = (_props: IconProps) => {
       onMouseLeave={() => setEntered(false)}
       style={{
         // color: devTheme === 'dark' ? '#aaaaaa' : '#6e6e6e',
-        color: entered ? theme.hoverIconColor : theme.iconColor,
-        opacity: 0.8,
-        fontSize: '16px',
-        paddingTop: '4px',
-        cursor: 'pointer',
-        transform: 'scaleX(-1)'
+        ...styles.icon,
+        color: entered ? theme.hoverIconColor : theme.iconColor
       }}
       onClick={() => handleClick()}
     ></i>
