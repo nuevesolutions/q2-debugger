@@ -16,6 +16,12 @@ Q2 API debugger is similar to network inspector which lists out only tecton Q2 A
 
 Chrome network inspector shows API headers/body vs Q2 API debugger extension shows Tecton request key and request/response payloads.
 
+Meta contains internal API requests the backend does. In each request, we can see the body that is being passed, HTTP method, API url and also the response.
+
+Columns can be resizable, we can change the size of the columns like the same in network inspector.
+
+Copy the request data, response data with a single right mouse click.
+
 <img class="q2apiimg2 aligncenter" src="https://nuevesolutions.com/wp-content/uploads/2020/08/Screenshot3.jpg" alt="extension" />
 
 <strong>FAQ:</strong>
@@ -24,7 +30,6 @@ Chrome network inspector shows API headers/body vs Q2 API debugger extension sho
 </ol>
 <strong>Planned improvements:</strong>
 <ol>
- 	<li>Columns need to be made resizable</li>
  	<li>Need to support regular Q2 backend calls</li>
 </ol>
 <p style="font-size: 16px;"><strong>Support:</strong></p>
