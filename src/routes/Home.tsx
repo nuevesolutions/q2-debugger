@@ -17,7 +17,7 @@
 import React, { FC, useEffect, useState, useRef } from 'react';
 // import RequestsTable from './home/containers/RequestsTable';
 import RequestsTable from './home/containers/RequestsTable';
-// import RequestsResizableTable from './home/containers/RequestResizableTable';
+import RequestsResizableTable from './home/containers/RequestResizableTable';
 import AddApi from './addCustomApi/containers/addCustomApi';
 import useRequests from '../hooks/useRequests';
 import useTheme from '../hooks/useTheme';

@@ -60,6 +60,7 @@ export default function useRequests(): any {
     let data = atob(decodeURI(formData.data));
     try {
       data = JSON.parse(data);
+      // console.log(data, 'data', JSON.stringify(data));
     } catch (err) {}
     const bodyString = await new Promise<string>((resolve) => {
       request.getContent((content: string, _encoding: string) => {
@@ -67,9 +68,10 @@ export default function useRequests(): any {
       });
     });
     const responseBody = JSON.parse(bodyString);
+    // console.log(responseBody, 'response body');
     setRequests([
       {
-        requestData: JSON.stringify(data),
+        requestData: data,
         routingKey,
         status:
           JSON.parse(responseBody?.data?.forms?.[0])?.status ||

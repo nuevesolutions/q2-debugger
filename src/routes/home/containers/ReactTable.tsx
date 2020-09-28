@@ -154,6 +154,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                   onMouseLeave={() => setHoverRow('')}
                 >
                   {row.cells.map((cell) => {
+                    // console.log(typeof cell.value, 'type', cell.column.id);
                     return (
                       <Cell
                         id="myCell"
@@ -161,7 +162,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                         onContextMenu={(e) => handleClick(e, cell.value)}
                         borderLeftWidth={0.5}
                         paddingLeft={1}
-                        height={20}
+                        height="100%"
                       >
                         {!(
                           cell.column.id === 'status' ||

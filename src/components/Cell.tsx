@@ -26,7 +26,7 @@ export interface CellProps extends SiliconCellProps {
   borderTopWidth?: number;
   borderLeftWidth?: number;
   borderRightWidth?: number;
-  height?: number;
+  height?: number | string;
   border?: number;
   backgroundColor?: string;
   borderBottomWidth?: number;

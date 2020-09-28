@@ -45,6 +45,7 @@ const Icon: FC<IconProps> = (_props: IconProps) => {
         color: entered ? theme.hoverIconColor : theme.iconColor,
         opacity: 0.8,
         fontSize: '16px',
+        paddingTop: '4px',
         cursor: 'pointer',
         transform: 'scaleX(-1)'
       }}
