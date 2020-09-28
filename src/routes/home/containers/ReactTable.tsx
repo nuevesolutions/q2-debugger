@@ -162,7 +162,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                         onContextMenu={(e) => handleClick(e, cell.value)}
                         borderLeftWidth={0.5}
                         paddingLeft={1}
-                        height="100%"
+                        height={20}
                       >
                         {!(
                           cell.column.id === 'status' ||
