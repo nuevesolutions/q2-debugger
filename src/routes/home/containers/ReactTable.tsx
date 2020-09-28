@@ -55,7 +55,7 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
       {
         Header: 'Request Data',
         accessor: 'requestData',
-        width: '40%'
+        width: '45%'
       },
       {
         Header: 'Response Data',
@@ -84,18 +84,13 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
   }, [rows, height, inspector, requests]);
 
   const handleClick = (e: any, value: string) => {
-    const copiedText = document.createElement('textarea');
-    copiedText.value = JSON.stringify(value);
-    if (value) {
-      setTooltip(true);
-    }
-    copiedText.setAttribute('readonly', '');
-    copiedText.style.position = 'absolute';
-    copiedText.style.left = '-9999px';
-    document.body.appendChild(copiedText);
-    copiedText.select();
+    const input = document.createElement('textarea');
+    document.body.appendChild(input);
+    input.value = JSON.stringify(value);
+    if (value) setTooltip(true);
+    input.select();
     document.execCommand('copy');
-    document.body.removeChild(copiedText);
+    document.body.removeChild(input);
     e.preventDefault();
     setTimeout(() => {
       setTooltip(false);
@@ -150,11 +145,11 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                         : theme.oddRowBg
                       : theme.hoverRowBg
                   }
+                  height="100%"
                   onMouseEnter={() => setHoverRow(row.id)}
                   onMouseLeave={() => setHoverRow('')}
                 >
                   {row.cells.map((cell) => {
-                    // console.log(typeof cell.value, 'type', cell.column.id);
                     return (
                       <Cell
                         id="myCell"
@@ -162,14 +157,14 @@ const ReactTable: FC<RequestsTableProps> = (props: RequestsTableProps) => {
                         onContextMenu={(e) => handleClick(e, cell.value)}
                         borderLeftWidth={0.5}
                         paddingLeft={1}
-                        height={20}
+                        height={0}
                       >
                         {!(
                           cell.column.id === 'status' ||
                           cell.column.id === 'routingKey'
                         )
                           ? cell?.value !== null && (
-                              <Box paddingTop={1}>
+                              <Box paddingTop={1} height="100%">
                                 <Inspector
                                   theme={{
                                     ...chromeLight,

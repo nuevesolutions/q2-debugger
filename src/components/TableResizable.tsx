@@ -42,7 +42,7 @@ const TableResize = () => {
             borderLeftWidth={1}
             borderTopWidth={1}
             width="20%"
-            height={30}
+            height=""
           >
             One
           </Cell>
