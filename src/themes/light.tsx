@@ -9,7 +9,9 @@ const theme = {
   hoverRowBg: '#f1f6fd',
   headerCellBg: '#f3f3f3',
   hoverHeaderCellBg: '#e6e6e6',
-  borderColor: '#cdcdcd'
+  borderColor: '#cdcdcd',
+  backgroundColor: 'black',
+  color: 'white'
 };
 
 export default theme;

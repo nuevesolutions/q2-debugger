@@ -1,8 +1,11 @@
 import React, { FC, ReactNode } from 'react';
 import Box from './Box';
+import useTheme from '../hooks/useTheme';
 
 export interface ToastProps {
   style?: object;
+  backgroundColor?: string;
+  color?: string;
 }
 
 export const styles = {
@@ -10,8 +13,6 @@ export const styles = {
     visibility: 'visible',
     minWidth: '200px',
     marginLeft: '-125px',
-    backgroundColor: '#333',
-    color: '#fff',
     textAlign: 'center',
     borderRadius: '2px',
     padding: '5px',
@@ -24,8 +25,11 @@ export const styles = {
 
 const Toast: FC<ToastProps> = (props: ToastProps) => {
   const { style } = props;
+  const theme = useTheme();
   return (
     <Box
+      backgroundColor={theme?.backgroundColor}
+      color={theme?.color}
       style={{
         ...styles.toast,
         ...style
