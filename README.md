@@ -28,7 +28,7 @@ Chrome network inspector shows API headers/body vs Q2 API debugger extension sho
  	<li>Columns need to be made resizable</li>
  	<li>Need to support regular Q2 backend calls</li>
 </ol>
-<strong>Improvements</strong>
+<strong>Features</strong>
 <ol>
     <li>Supports regular Q2 backend calls</li>
     <li>As per Chrome network inspector columns are made resizable</li> 
