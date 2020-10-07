@@ -3,7 +3,7 @@
 > inspect tecton q2 api calls
 
 The q2 api debugger inspects the tecton q2 api calls. It works similar to the chrome network inspector.
-It shows the backend request key and payload that was sent and received.
+It shows the `routing_key` and `payload` that was sent and received to the extension.
 ![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-28-40.png)
 
 ## [Install Chrome Plugin](https://chrome.google.com/webstore/detail/q2-debugger/ofenoeokeajgginmciegemdiioglcdio)
@@ -11,7 +11,7 @@ It shows the backend request key and payload that was sent and received.
 **[Click Here](https://chrome.google.com/webstore/detail/q2-debugger/ofenoeokeajgginmciegemdiioglcdio)** to install the extension from chrome web store.
 
 ## Highlights
-  - Supports regular Q2 backend calls
+  - Tracks regular Q2 backend calls
   - Resizable columns
 	![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-34-11.png)
   - Button to **clear** the inspector, similar to the chrome network inspector
