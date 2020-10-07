@@ -1,39 +1,30 @@
-<strong>Chrome plugin Link:</strong>
+## Chrome plugin Link:
 
-To check out the  Extension on Chrome Web Store. <a href="https://chrome.google.com/webstore/detail/q2-debugger/ofenoeokeajgginmciegemdiioglcdio" target="_blank" rel="noopener noreferrer">Click Here</a>
+**[Click Here](https://chrome.google.com/webstore/detail/q2-debugger/ofenoeokeajgginmciegemdiioglcdio)** to check out the Extension on Chrome Web Store.
 
-<strong>Features:</strong>
+## Features:
 
-Q2 API debugger is similar to network inspector which lists out only tecton Q2 API calls. It shows the backend request key and payload sent/received.
+The Q2 API debugger inspects the tecton Q2 API calls. It works similar to the chrome network inspector. It shows the backend request key and payload that was sent and received.
 
-Chrome network inspector shows API headers/body vs Q2 API debugger extension shows Tecton request key and request/response payloads.
+![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-28-40.png)
 
-<img class="q2apiimg1 aligncenter" src="https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-28-40.png" alt="extension" />
+## Highlights:
+  - Supports regular Q2 backend calls
+  - As per Chrome network inspector columns are made resizable
+	![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-34-11.png)
+  - Clear, icon added to clear's the data  of pervious Api call in the inspector, same as chrome network inspector
+  - Added copy functionality on "Right click" to copy status,Routing key,Request and Response data
+	![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-06-12-32-33-1-1.png)
+  - Supports switching from default light theme to dark theme from devTools panel setting , light and dark theme. In devTools panel setting change theme from system preference to dark ,it changes the theme from light to dark
+	![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-27-30.png)
 
-<!-- <strong>Planned improvements:</strong>
-<ol>
- 	<li>Columns need to be made resizable</li>
- 	<li>Need to support regular Q2 backend calls</li>
-</ol> -->
+## Meta:
+  Meta attribute in q2 debugger is used  to see Q2 API Request and Response easily. If one single Q2 API calls internally another API calls, Meta also tracks all requested API'S information and shows in List.
 
-<strong>Highlights</strong>
-<ol>
-    <li>Supports regular Q2 backend calls</li>
-    <li>As per Chrome network inspector columns are made resizable</li> 
-	<img class="q2apiimg2 aligncenter" src="https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-34-11.png" alt="extension" />
-	<li>Clear, icon added to clear's the data  of pervious Api call in the inspector, same as chrome network inspector</li>
-	<li>Added copy functionality on "Right click" to copy status,Routing key,Request and Response data </li>
-	<img class="q2apiimg2 aligncenter" src="https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-06-12-32-33-1-1.png" alt="extension" />
-	<li>supports switching from default light theme to dark theme from devTools panel setting , light and dark theme. In devTools panel setting change theme from system preference to dark ,it changes the theme from light to dark   </li>
-	<img class="q2apiimg2 aligncenter" src="https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-27-30.png" alt="extension" />
-</ol>
-
-<strong>Meta:</strong>
-   <p>Meta attribute in q2 debugger is used  to see Q2 API Request and Response easily. If one single Q2 API calls internally another API calls, Meta also tracks all requested API'S information and shows in List.</p>
-   META contains Following information for user requested Q2 API:
+#### META contains Following information for user requested Q2 API:
 
 	
-    if success:
+###### if success:
 	  request - In this, we can get information like method, body, url of the API call.
 	  url
 	  headers - It helps us to know the available headers that are used for the API call.
@@ -43,19 +34,15 @@ Chrome network inspector shows API headers/body vs Q2 API debugger extension sho
 	  status  - It helps in knowing the status of the API call.   
 
  
-    if fails:
+###### if fails:
       It also tracks errors 
 
 The below example is the sample meta of an API call.
 
-<img class="q2apiimg1 aligncenter" src="https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-30-15.png" alt="extension" width="600" height="600" />
+![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-30-15.png)
 
-<strong>FAQ:</strong>
+## FAQ:
+  - The plugin is supporting only Tecton API requests at this moment
 
-<ol>
- 	<li>The plugin is supporting only Tecton API requests at this moment</li>
-</ol>
-<p style="font-size: 16px;"><strong>Support:</strong></p>
- You can comment and make suggestions for the plugin here. <a href="https://nuevesolutions.com/q2-api-debugger-chrome-extension/" target="_blank" rel="noopener noreferrer">Click Here</a>
-
-&nbsp;
+## Support:
+ You can comment and make suggestions for the plugin here. [Click Here](https://nuevesolutions.com/q2-api-debugger-chrome-extension/)
