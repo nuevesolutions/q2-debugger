@@ -11,7 +11,8 @@ It shows the `routing_key` and `payload` that was sent/received to/from the exte
 **[Click Here](https://chrome.google.com/webstore/detail/q2-debugger/ofenoeokeajgginmciegemdiioglcdio)** to install the extension from chrome web store.
 
 ## Highlights
-  - Tracks regular Q2 backend calls
+  - Tracks `requestExtensionData` (api calls to the Q2 backend extension)
+  - Debugs q2 extension backend by tracking meta.
   - Resizable columns
 	![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-34-11.png)
   - Button to **clear** the inspector, similar to the chrome network inspector
@@ -39,9 +40,8 @@ Meta can track requests that were made from a q2 extension during the q2 api cal
 | `request.headers`          | api http request headers  |
 | `request.body`             | api http request body     |
 | `request.response`         | api http response         |
-| `request.response.body`    | api http response body    |
 | `request.response.headers` | api http response headers |
-
+| `request.response.body`    | api http response body    |
 
 #### Tracebacks
 
@@ -49,7 +49,7 @@ Meta can track any python exceptions that were thrown during the api call.
 
 #### Extendable
 
-Meta supports an api for extending the data points meta tracks. You can get more information about this by contacting us on our [support page](#get-support).
+Meta supports an api for extending the data points meta tracks. You can get more information about this by contacting us on our [support page](https://nuevesolutions.com/q2-api-debugger-chrome-extension).
 
 ## FAQ
   - What type of q2 api calls are supported?
