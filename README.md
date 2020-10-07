@@ -1,48 +1,60 @@
-## Chrome plugin Link:
+# Q2 Debugger
 
-**[Click Here](https://chrome.google.com/webstore/detail/q2-debugger/ofenoeokeajgginmciegemdiioglcdio)** to check out the Extension on Chrome Web Store.
+> inspect tecton q2 api calls
 
-## Features:
-
-The Q2 API debugger inspects the tecton Q2 API calls. It works similar to the chrome network inspector. It shows the backend request key and payload that was sent and received.
-
+The q2 api debugger inspects the tecton q2 api calls. It works similar to the chrome network inspector.
+It shows the backend request key and payload that was sent and received.
 ![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-28-40.png)
 
-## Highlights:
+## [Install Chrome Plugin](https://chrome.google.com/webstore/detail/q2-debugger/ofenoeokeajgginmciegemdiioglcdio)
+
+**[Click Here](https://chrome.google.com/webstore/detail/q2-debugger/ofenoeokeajgginmciegemdiioglcdio)** to install the extension from chrome web store.
+
+## Highlights
   - Supports regular Q2 backend calls
-  - As per Chrome network inspector columns are made resizable
+  - Resizable columns
 	![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-34-11.png)
-  - Clear, icon added to clear's the data  of pervious Api call in the inspector, same as chrome network inspector
-  - Added copy functionality on "Right click" to copy status,Routing key,Request and Response data
+  - Button to **clear** the inspector, similar to the chrome network inspector
+  - **Right click** to copy data from one of the cells, such as the _Routing Key_, _Request Data_ or _Response Data_
 	![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-06-12-32-33-1-1.png)
-  - Supports switching from default light theme to dark theme from devTools panel setting , light and dark theme. In devTools panel setting change theme from system preference to dark ,it changes the theme from light to dark
+  - Light and dark themes that match the chrome debugger theme
 	![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-27-30.png)
 
-## Meta:
-  Meta attribute in q2 debugger is used  to see Q2 API Request and Response easily. If one single Q2 API calls internally another API calls, Meta also tracks all requested API'S information and shows in List.
+## Meta
 
-#### META contains Following information for user requested Q2 API:
+> Debug the backend of a q2 python extension using meta
 
-	
-###### if success:
-	  request - In this, we can get information like method, body, url of the API call.
-	  url
-	  headers - It helps us to know the available headers that are used for the API call.
-	  data
-	  response -It consists of the response object of the API call.
-	  body
-	  status  - It helps in knowing the status of the API call.   
-
- 
-###### if fails:
-      It also tracks errors 
-
-The below example is the sample meta of an API call.
+Meta tracks debugging information from a q2 backend extension during an api call.
 
 ![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-30-15.png)
 
-## FAQ:
-  - The plugin is supporting only Tecton API requests at this moment
+#### Requests
 
-## Support:
- You can comment and make suggestions for the plugin here. [Click Here](https://nuevesolutions.com/q2-api-debugger-chrome-extension/)
+Meta can track requests that were made from a q2 extension during the q2 api call.
+
+| key                        | value                     |
+| --------                   | ------------------------- |
+| `request`                  | api http request          |
+| `request.url`              | api http request url      |
+| `request.headers`          | api http request headers  |
+| `request.body`             | api http request body     |
+| `request.response`         | api http response         |
+| `request.response.body`    | api http response body    |
+| `request.response.headers` | api http response headers |
+
+
+#### Tracebacks
+
+Meta can track any python exceptions that were thrown during the api call.
+
+#### Extendable
+
+Meta supports an api for extending the data points meta tracks. You can get more information about this by contacting us on our [support page](#get-support).
+
+## FAQ
+  - What type of q2 api calls are supported?
+    - Currently only q2 tecton requests are supported.
+
+## [Get Support](https://nuevesolutions.com/q2-api-debugger-chrome-extension)
+
+[Click Here](https://nuevesolutions.com/q2-api-debugger-chrome-extension) to comment and make suggestions for the plugin.
