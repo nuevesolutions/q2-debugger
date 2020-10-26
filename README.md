@@ -27,7 +27,7 @@ It shows the `routing_key` and `payload` that was sent/received to/from the exte
 
 Meta tracks debugging information from a q2 backend extension during an api call.
 
-![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/Screenshot-from-2020-10-05-12-30-15.png)
+![extension](https://nuevesolutions.com/wp-content/uploads/2020/10/smudged.jpeg)
 
 #### Requests
 
