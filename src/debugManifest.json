@@ -1,6 +1,6 @@
 {
   "name": "Q2 Debugger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Debug Q2 tecton network extension data requests",
   "manifest_version": 2,
   "devtools_page": "devtools.html",
